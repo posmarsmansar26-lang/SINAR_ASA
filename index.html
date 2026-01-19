@@ -3,65 +3,194 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>POSMAR Splash</title>
+<title>POSMAR Home</title>
 <style>
-  body, html {
-    margin: 0; padding: 0; height: 100%;
-    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 60%);
-    display: flex; justify-content: center; align-items: center; flex-direction: column;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #0b3d91;
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #e6f0ff;
+    color: #1e40af;
   }
-  .logo {
-    width: 180px; height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 0 30px 10px rgba(255 223 93 / 0.7);
-    animation: scaleUp 2s ease forwards;
+  header {
+    background: #3b82f6;
+    padding: 15px 30px;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
   }
-  h1 {
-    margin-top: 15px;
-    font-weight: 700;
-    font-size: 2.5rem;
-    background: linear-gradient(90deg, #0b3d91 50%, #ffd93d 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: fadeInText 3s ease forwards;
+  .container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    height: calc(100vh - 72px);
   }
-  .sinar {
-    margin-top: 20px;
-    width: 120px;
-    height: 10px;
-    background: linear-gradient(90deg, transparent, #ffd93d, transparent);
-    border-radius: 50%;
-    filter: blur(6px);
-    animation: glowPulse 3s ease infinite;
+  .box {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+    overflow-y: auto;
   }
 
-  @keyframes scaleUp {
-    0% {transform: scale(0);}
-    100% {transform: scale(1);}
+  /* Feed (kiri) */
+  .home {
+    flex: 2.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  @keyframes fadeInText {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+  .post {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
   }
-  @keyframes glowPulse {
-    0%, 100% {opacity: 0.5;}
-    50% {opacity: 1;}
+  .post img {
+    width: 280px;
+    height: 280px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
   }
+  .post h3 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+  }
+  .post p {
+    color: #555;
+    margin-top: 8px;
+    font-size: 16px;
+  }
+
+  /* Kalender */
+  .calendar {
+    flex: 1.5;
+  }
+  .calendar h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #0b3d91;
+  }
+  .month {
+    background: #dbeafe;
+    border-radius: 8px;
+    margin: 6px 0;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #1e40af;
+  }
+
+  /* Forum Aspirasi */
+  .forum {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+  }
+  .forum h3 {
+    margin: 0 0 10px 0;
+    color: #0b3d91;
+  }
+  .forum textarea {
+    resize: none;
+    height: 120px;
+    border-radius: 12px;
+    border: 1px solid #93c5fd;
+    padding: 12px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+  }
+  .forum button {
+    background: #2563eb;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+  }
+  .forum button:hover {
+    background-color: #1e40af;
+  }
+
+  /* Akun */
+  .account {
+    flex: 1;
+    text-align: center;
+  }
+  .account img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  }
+  .account h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #1e40af;
+  }
+  .status {
+    font-size: 14px;
+    color: #22c55e;
+  }
+
 </style>
 </head>
 <body>
-  <img src="logo-posmar.png" alt="Logo POSMAR" class="logo" />
-  <h1>Sinar Asa</h1>
-  <div class="sinar"></div>
 
-  <script>
-    setTimeout(() => {
-      window.location.href = 'home.html';
-    }, 3500); // Pindah ke home setelah 3.5 detik
-  </script>
+<header>POSMAR</header>
+
+<div class="container">
+
+  <!-- Feed -->
+  <div class="box home">
+    <div class="post">
+      <img src="logo-posmar.png" alt="Logo POSMAR" />
+      <h3>POSMAR</h3>
+      <p>Sinar Asa</p>
+    </div>
+  </div>
+
+  <!-- Kalender -->
+  <div class="box calendar">
+    <h3>Kalender OSIS 2026</h3>
+    <div class="month">Januari – Event OSIS</div>
+    <div class="month">Februari – Event OSIS</div>
+    <div class="month">Maret – Event OSIS</div>
+    <div class="month">April – Event OSIS</div>
+    <div class="month">Mei – Event OSIS</div>
+    <div class="month">Juni – Event OSIS</div>
+    <div class="month">Juli – Event OSIS</div>
+    <div class="month">Agustus – Event OSIS</div>
+    <div class="month">September – Event OSIS</div>
+    <div class="month">Oktober – Event OSIS</div>
+    <div class="month">November – Event OSIS</div>
+    <div class="month">Desember – Event OSIS</div>
+  </div>
+
+  <!-- Forum Aspirasi -->
+  <div class="box forum">
+    <h3>Forum Aspirasi</h3>
+    <textarea placeholder="Tulis aspirasi kamu di sini..."></textarea>
+    <button>Kirim Aspirasi</button>
+  </div>
+
+  <!-- Akun Pengguna -->
+  <div class="box account">
+    <img src="user.png" alt="Foto Pengguna" />
+    <h4>Nama Pengguna</h4>
+    <div class="status">● Online</div>
+  </div>
+
+</div>
+
 </body>
 </html>
+
 
