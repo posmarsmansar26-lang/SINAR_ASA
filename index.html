@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>POSMAR</title>
 <style>
+  <!-- semua konten Home sudah ada di atas ini -->
+
+<!-- Tambahkan kode ini di bawah -->
+<script>
+  setTimeout(() => {
+    const splash = document.querySelector('.splash');
+    splash.style.opacity = 0;       // fade out
+    setTimeout(() => {
+      splash.style.display = 'none'; // hilangkan splash
+    }, 800); // sama dengan durasi fade out
+  }, 3000); // tampil 3 detik
+</script>
+
+</body>
   body, html {
     margin: 0; padding: 0;
     font-family: Arial, sans-serif;
