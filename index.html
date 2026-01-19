@@ -3,14 +3,68 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>POSMAR Home</title>
+<title>POSMAR</title>
 <style>
-  body {
-    margin: 0;
+  body, html {
+    margin: 0; padding: 0;
     font-family: Arial, sans-serif;
     background: #e6f0ff;
-    color: #1e40af;
+    color: #1e3a8a;
   }
+
+  /* ======= SPLASH SCREEN ======= */
+  .splash {
+    height: 100vh;
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #0b3d91;
+  }
+  .splash .logo {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 30px 10px rgba(255 223 93 / 0.7);
+    animation: scaleUp 2s ease forwards;
+  }
+  .splash h1 {
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #0b3d91 50%, #ffd93d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    animation: fadeInText 3s ease forwards;
+  }
+  .splash .sinar {
+    margin-top: 20px;
+    width: 120px;
+    height: 10px;
+    background: linear-gradient(90deg, transparent, #ffd93d, transparent);
+    border-radius: 50%;
+    filter: blur(6px);
+    animation: glowPulse 3s ease infinite;
+  }
+
+  @keyframes scaleUp {
+    0% {transform: scale(0);}
+    100% {transform: scale(1);}
+  }
+  @keyframes fadeInText {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+  @keyframes glowPulse {
+    0%, 100% {opacity: 0.5;}
+    50% {opacity: 1;}
+  }
+
+  /* ======= HOME LAYOUT ======= */
   header {
     background: #3b82f6;
     padding: 15px 30px;
@@ -19,12 +73,13 @@
     color: white;
     text-align: center;
   }
+
   .container {
     display: flex;
     gap: 20px;
     padding: 20px;
-    height: calc(100vh - 72px);
   }
+
   .box {
     background: white;
     border-radius: 12px;
@@ -34,7 +89,7 @@
   }
 
   /* Feed (kiri) */
-  .home {
+  .home-feed {
     flex: 2.5;
     display: flex;
     flex-direction: column;
@@ -139,17 +194,23 @@
     font-size: 14px;
     color: #22c55e;
   }
-
 </style>
 </head>
 <body>
 
+<!-- SPLASH SCREEN -->
+<div class="splash">
+  <img src="logo-posmar.png" alt="Logo POSMAR" class="logo" />
+  <h1>Sinar Asa</h1>
+  <div class="sinar"></div>
+</div>
+
+<!-- HOME PAGE -->
 <header>POSMAR</header>
 
 <div class="container">
-
   <!-- Feed -->
-  <div class="box home">
+  <div class="box home-feed">
     <div class="post">
       <img src="logo-posmar.png" alt="Logo POSMAR" />
       <h3>POSMAR</h3>
@@ -187,10 +248,10 @@
     <h4>Nama Pengguna</h4>
     <div class="status">● Online</div>
   </div>
-
 </div>
 
 </body>
 </html>
+
 
 
