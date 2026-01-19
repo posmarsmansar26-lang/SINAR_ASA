@@ -123,6 +123,54 @@
   .calendar {
     flex: 1.5;
   }
+  <!-- Kalender OSIS 2026 -->
+<div class="box calendar">
+  <h3>Kalender OSIS 2026</h3>
+  <div id="months-container">
+    <!-- Bulan akan di-generate oleh JavaScript -->
+  </div>
+  <div id="events-container" style="margin-top: 15px; font-size: 14px; color: #1e40af;"></div>
+</div>
+
+<script>
+  const months = [
+    "Januari","Februari","Maret","April","Mei","Juni",
+    "Juli","Agustus","September","Oktober","November","Desember"
+  ];
+
+  const events = {
+    "Januari": "Rapat OSIS & Pembagian Tugas",
+    "Februari": "Lomba Kebersihan Kelas",
+    "Maret": "Kegiatan Sosial",
+    "April": "Ujian Tengah Semester",
+    "Mei": "Pentas Seni",
+    "Juni": "Laporan Kegiatan Semester",
+    "Juli": "Libur Semester",
+    "Agustus": "HUT Kemerdekaan & Lomba OSIS",
+    "September": "Kegiatan Ekstrakurikuler",
+    "Oktober": "Persiapan Ujian Akhir",
+    "November": "Ujian Akhir Semester",
+    "Desember": "Penutupan Kegiatan OSIS"
+  };
+
+  const monthsContainer = document.getElementById("months-container");
+  const eventsContainer = document.getElementById("events-container");
+
+  // Generate list bulan
+  months.forEach(month => {
+    const div = document.createElement("div");
+    div.className = "month";
+    div.textContent = month;
+    div.style.cursor = "pointer";
+
+    div.onclick = () => {
+      eventsContainer.textContent = `${month}: ${events[month] || "Belum ada event"}`;
+    };
+
+    monthsContainer.appendChild(div);
+  });
+</script>
+
   .calendar h3 {
     margin-top: 0;
     margin-bottom: 12px;
