@@ -246,26 +246,7 @@
   <h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
     Ruang Diskusi OSIS
   </h2>
-
-  <!-- POST ADMIN -->
-  <div style="
-    background:white;
-    border-radius:12px;
-    padding:15px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.1);
-    margin-bottom:15px;
-  ">
-    <img 
-      src="https://via.placeholder.com/600x300?text=Postingan+Admin"
-      alt="Postingan Admin"
-      style="width:100%;border-radius:10px;margin-bottom:10px;"
-    />
-
-    <p style="font-weight:bold;color:#1976d2;">Komentar:</p>
-
-    <div id="commentList" style="margin-top:10px;font-size:14px;"></div>
-
-    <script>
+  <script>
   const commentList = document.getElementById("commentList");
   const commentInput = document.getElementById("commentInput");
   const nameInput = document.getElementById("nameInput");
@@ -343,6 +324,26 @@
   renderComments();
 </script>
 
+
+  <!-- POST ADMIN -->
+  <div style="
+    background:white;
+    border-radius:12px;
+    padding:15px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom:15px;
+  ">
+    <img 
+      src="https://via.placeholder.com/600x300?text=Postingan+Admin"
+      alt="Postingan Admin"
+      style="width:100%;border-radius:10px;margin-bottom:10px;"
+    />
+
+    <p style="font-weight:bold;color:#1976d2;">Komentar:</p>
+
+    <div id="commentList" style="margin-top:10px;font-size:14px;"></div>
+
+    
     <textarea 
       id="commentInput"
       placeholder="Tulis komentar kamu..."
