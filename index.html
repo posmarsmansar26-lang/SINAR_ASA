@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sinar Asa</title>
 
-  <!-- Font Corduroy (alternatif mirip display) -->
-  <link href="https://fonts.googleapis.com/css2?family=Corduroy&display=swap" rel="stylesheet">
-
   <style>
     * {
       box-sizing: border-box;
@@ -18,10 +15,9 @@
 
     body {
       background: #f4f8ff;
-      padding-bottom: 70px;
+      padding-bottom: 80px;
     }
 
-    /* ===== HEADER ===== */
     header {
       background: #1976d2;
       color: white;
@@ -30,17 +26,14 @@
     }
 
     header h1 {
-      font-family: 'Corduroy', cursive;
-      font-size: 36px;
+      font-size: 32px;
       letter-spacing: 2px;
-      color: #ffffff;
     }
 
-    /* ===== PAGE ===== */
     .page {
       display: none;
       padding: 20px;
-      max-width: 600px;
+      max-width: 900px;
       margin: auto;
     }
 
@@ -58,30 +51,31 @@
       text-align: center;
     }
 
-    .home-box p {
-      color: #1976d2;
-      font-size: 16px;
+    /* ===== CALENDAR ===== */
+    .month {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    /* ===== CALENDAR ===== */
-    .calendar h2 {
+    .month h3 {
       text-align: center;
       color: #1976d2;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 5px;
-      margin-bottom: 20px;
     }
 
     .day {
-      background: white;
-      border-radius: 6px;
-      padding: 10px;
+      padding: 8px;
       text-align: center;
+      border-radius: 6px;
       font-size: 14px;
     }
 
@@ -91,29 +85,17 @@
       font-weight: bold;
     }
 
-    .holiday {
-      background: #bbdefb;
+    .sunday {
+      color: red;
       font-weight: bold;
     }
 
-    .holiday-list {
-      background: white;
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    .holiday {
+      background: #ffcdd2;
+      color: red;
+      font-weight: bold;
     }
 
-    .holiday-list h3 {
-      color: #1976d2;
-      margin-bottom: 10px;
-    }
-
-    .holiday-list ul {
-      padding-left: 18px;
-      font-size: 14px;
-    }
-
-    /* ===== BOTTOM NAV ===== */
     footer {
       position: fixed;
       bottom: 0;
@@ -122,8 +104,8 @@
       display: flex;
       justify-content: space-around;
       padding: 12px 0;
-      color: white;
       font-size: 22px;
+      color: white;
     }
 
     footer span {
@@ -133,67 +115,92 @@
 </head>
 <body>
 
-  <header>
-    <h1>Sinar Asa</h1>
-  </header>
+<header>
+  <h1>Sinar Asa</h1>
+</header>
 
-  <!-- HOME PAGE -->
-  <div id="home" class="page active">
-    <div class="home-box">
-      <p>Selamat datang di aplikasi sekolah <b>Sinar Asa</b> 💙</p>
-      <p>Gunakan menu di bawah untuk berpindah halaman</p>
-    </div>
+<!-- HOME -->
+<div id="home" class="page active">
+  <div class="home-box">
+    <p>Selamat datang di aplikasi sekolah <b>Sinar Asa</b> 💙</p>
+    <p>Kalender akademik lengkap tahun 2026</p>
   </div>
+</div>
 
-  <!-- CALENDAR PAGE -->
-  <div id="calendar" class="page calendar">
-    <h2>Kalender 2026</h2>
+<!-- CALENDAR -->
+<div id="calendar" class="page">
+  <h2 style="text-align:center;color:#1976d2;margin-bottom:20px;">
+    Kalender Tahun 2026
+  </h2>
+  <div id="calendarContainer"></div>
+</div>
 
-    <div class="calendar-grid">
-      <div class="day header">Min</div>
-      <div class="day header">Sen</div>
-      <div class="day header">Sel</div>
-      <div class="day header">Rab</div>
-      <div class="day header">Kam</div>
-      <div class="day header">Jum</div>
-      <div class="day header">Sab</div>
+<footer>
+  <span onclick="showPage('home')">🏠</span>
+  <span onclick="showPage('calendar')">📅</span>
+</footer>
 
-      <div class="day"></div>
-      <div class="day"></div>
-      <div class="day"></div>
-      <div class="day holiday">1</div>
-      <div class="day">2</div>
-      <div class="day">3</div>
-      <div class="day">4</div>
-    </div>
+<script>
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+  }
 
-    <div class="holiday-list">
-      <h3>Hari Besar 2026</h3>
-      <ul>
-        <li>1 Januari – Tahun Baru Masehi (Nasional)</li>
-        <li>21 Februari – Hari Bahasa Ibu Internasional</li>
-        <li>21 April – Hari Kartini (Nasional)</li>
-        <li>1 Mei – Hari Buruh Internasional</li>
-        <li>17 Agustus – Hari Kemerdekaan RI</li>
-        <li>5 Oktober – Hari Guru Sedunia</li>
-        <li>25 Desember – Hari Natal</li>
-      </ul>
-    </div>
-  </div>
+  const holidays = [
+    "2026-01-01",
+    "2026-02-21",
+    "2026-04-21",
+    "2026-05-01",
+    "2026-08-17",
+    "2026-10-05",
+    "2026-12-25"
+  ];
 
-  <!-- BOTTOM NAVIGATION -->
-  <footer>
-    <span onclick="showPage('home')">🏠</span>
-    <span onclick="showPage('calendar')">📅</span>
-  </footer>
+  const months = [
+    "Januari","Februari","Maret","April","Mei","Juni",
+    "Juli","Agustus","September","Oktober","November","Desember"
+  ];
 
-  <script>
-    function showPage(pageId) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById(pageId).classList.add('active');
+  const days = ["Min","Sen","Sel","Rab","Kam","Jum","Sab"];
+
+  const container = document.getElementById("calendarContainer");
+
+  months.forEach((month, m) => {
+    const monthDiv = document.createElement("div");
+    monthDiv.className = "month";
+
+    monthDiv.innerHTML = `<h3>${month} 2026</h3>`;
+
+    const grid = document.createElement("div");
+    grid.className = "calendar-grid";
+
+    days.forEach(d => {
+      grid.innerHTML += `<div class="day header">${d}</div>`;
+    });
+
+    const firstDay = new Date(2026, m, 1).getDay();
+    const totalDays = new Date(2026, m + 1, 0).getDate();
+
+    for (let i = 0; i < firstDay; i++) {
+      grid.innerHTML += `<div class="day"></div>`;
     }
-  </script>
+
+    for (let d = 1; d <= totalDays; d++) {
+      const date = new Date(2026, m, d);
+      const dateStr = date.toISOString().split("T")[0];
+
+      let className = "day";
+
+      if (date.getDay() === 0) className += " sunday";
+      if (holidays.includes(dateStr)) className += " holiday";
+
+      grid.innerHTML += `<div class="${className}">${d}</div>`;
+    }
+
+    monthDiv.appendChild(grid);
+    container.appendChild(monthDiv);
+  });
+</script>
 
 </body>
 </html>
-
