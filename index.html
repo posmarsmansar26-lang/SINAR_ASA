@@ -1,54 +1,66 @@
 <!DOCTYPE html>
-  <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sinar Asa</title>
-  
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-      }
-  
-      body {
-        background: #f4f8ff;
-        padding-bottom: 80px;
-      }
-  
-      header {
-        background: #1976d2;
-        color: white;
-        padding: 20px;
-        text-align: center;
-      }
-  
-      header h1 {
-        font-size: 32px;
-        letter-spacing: 2px;
-      }
-  
-      .page {
-        display: none;
-        padding: 20px;
-        max-width: 900px;
-        margin: auto;
-      }
-  
-      .page.active {
-        display: block;
-      }
-  
-      /* ===== HOME ===== */
-      .home-box {
-        background: white;
-        border-radius: 12px;
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sinar Asa</title>
+
+  <!-- GOOGLE FONT CURSIVE -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f8ff;
+      padding-bottom: 80px;
+    }
+
+    header {
+      background: #1976d2;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 32px;
+      letter-spacing: 2px;
+    }
+
+    .page {
+      display: none;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* ===== HOME ===== */
+      background: white;
+    .home-box {
+      border-radius: 12px;
       padding: 20px;
       margin-top: 20px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       text-align: center;
+
+      /* FONT CURSIVE */
+      font-family: 'Dancing Script', cursive;
+      font-size: 22px;
+    }
+
+    .home-box p {
+      font-family: 'Dancing Script', cursive;
+      margin-bottom: 10px;
     }
 
     /* ===== CALENDAR ===== */
@@ -122,7 +134,7 @@
 <!-- HOME -->
 <div id="home" class="page active">
   <div class="home-box">
-    <p>INSPIRASI💙 APA LAGI YANG AKAN KAMU BERIKAN?</p>
+    <p>INSPIRASI 💙 APA LAGI YANG AKAN KAMU BERIKAN?</p>
     <p>PENGURUS OSIS SMA NEGERI 1 RENGEL</p>
   </div>
 </div>
@@ -145,92 +157,7 @@
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById(pageId).classList.add('active');
   }
-
-  // ===== DATA HARI LIBUR 2026 =====
-  const holidays = {
-    "2026-01-01": "Tahun Baru Masehi",
-    "2026-02-21": "Hari Bahasa Ibu Internasional",
-    "2026-03-20": "Hari Kebahagiaan Internasional",
-    "2026-04-21": "Hari Kartini",
-    "2026-05-01": "Hari Buruh Internasional",
-    "2026-05-14": "Kenaikan Isa Almasih",
-    "2026-05-25": "Hari Raya Waisak",
-    "2026-06-17": "Hari Raya Idul Adha",
-    "2026-07-17": "Tahun Baru Islam",
-    "2026-08-17": "Hari Kemerdekaan Republik Indonesia",
-    "2026-09-28": "Maulid Nabi Muhammad SAW",
-    "2026-10-05": "Hari Guru Sedunia",
-    "2026-12-25": "Hari Raya Natal"
-  };
-
-  const months = [
-    "Januari","Februari","Maret","April","Mei","Juni",
-    "Juli","Agustus","September","Oktober","November","Desember"
-  ];
-
-  const days = ["Min","Sen","Sel","Rab","Kam","Jum","Sab"];
-  const container = document.getElementById("calendarContainer");
-
-  months.forEach((month, m) => {
-    const monthDiv = document.createElement("div");
-    monthDiv.className = "month";
-
-    monthDiv.innerHTML = `<h3>${month} 2026</h3>`;
-
-    const grid = document.createElement("div");
-    grid.className = "calendar-grid";
-
-    days.forEach(d => {
-      grid.innerHTML += `<div class="day header">${d}</div>`;
-    });
-
-    const firstDay = new Date(2026, m, 1).getDay();
-    const totalDays = new Date(2026, m + 1, 0).getDate();
-
-    for (let i = 0; i < firstDay; i++) {
-      grid.innerHTML += `<div class="day"></div>`;
-    }
-
-    let holidayNotes = [];
-
-    for (let d = 1; d <= totalDays; d++) {
-      const date = new Date(2026, m, d);
-      const dateStr = date.toISOString().split("T")[0];
-
-      let className = "day";
-
-      if (date.getDay() === 0) className += " sunday";
-
-      if (holidays[dateStr]) {
-        className += " holiday";
-        holidayNotes.push(`${d} ${month} – ${holidays[dateStr]}`);
-      }
-
-      grid.innerHTML += `<div class="${className}">${d}</div>`;
-    }
-
-    monthDiv.appendChild(grid);
-
-    // ===== KETERANGAN LIBUR BULANAN =====
-    if (holidayNotes.length > 0) {
-      const noteDiv = document.createElement("div");
-      noteDiv.style.marginTop = "10px";
-      noteDiv.innerHTML = `
-        <div style="
-          background:#fff;
-          border-radius:10px;
-          padding:10px;
-          font-size:14px;
-          box-shadow:0 2px 5px rgba(0,0,0,0.1)">
-          <b style="color:red;">🔴 Keterangan Hari Libur:</b>
-          <ul style="margin-top:5px;padding-left:18px;">
-            ${holidayNotes.map(h => `<li>${h}</li>`).join("")}
-          </ul>
-        </div>
-      `;
-      monthDiv.appendChild(noteDiv);
-    }
-
-    container.appendChild(monthDiv);
-  });
 </script>
+
+</body>
+</html>
