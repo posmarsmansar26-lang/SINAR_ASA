@@ -129,59 +129,6 @@
 
 <!-- CALENDAR -->
 <div id="calendar" class="page">
-  <!-- CHAT PAGE -->
-<div id="chat" class="page">
-  <h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
-    Ruang Diskusi OSIS
-  </h2>
-
-  <!-- POST ADMIN -->
-  <div style="
-    background:white;
-    border-radius:12px;
-    padding:15px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.1);
-    margin-bottom:15px;
-  ">
-    <img 
-      src="https://via.placeholder.com/600x300?text=Postingan+Admin"
-      alt="Postingan Admin"
-      style="width:100%;border-radius:10px;margin-bottom:10px;"
-    />
-
-    <p style="font-weight:bold;color:#1976d2;">Komentar:</p>
-
-    <div id="commentList" style="margin-top:10px;font-size:14px;"></div>
-
-    <textarea 
-      id="commentInput"
-      placeholder="Tulis komentar kamu..."
-      style="
-        width:100%;
-        margin-top:10px;
-        padding:8px;
-        border-radius:8px;
-        border:1px solid #ccc;
-      "
-    ></textarea>
-
-    <button 
-      onclick="addComment()"
-      style="
-        margin-top:8px;
-        background:#1976d2;
-        color:white;
-        border:none;
-        padding:8px 12px;
-        border-radius:8px;
-        cursor:pointer;
-      "
-    >
-      Kirim
-    </button>
-  </div>
-</div>
-
   <h2 style="text-align:center;color:#1976d2;margin-bottom:20px;">
     Kalender Tahun 2026
   </h2>
@@ -293,4 +240,57 @@
     container.appendChild(monthDiv);
   });
 </script>
+
+  <!-- CHAT PAGE -->
+<div id="chat" class="page">
+  <h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
+    Ruang Diskusi OSIS
+  </h2>
+
+  <!-- POST ADMIN -->
+  <div style="
+    background:white;
+    border-radius:12px;
+    padding:15px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom:15px;
+  ">
+    <img 
+      src="https://via.placeholder.com/600x300?text=Postingan+Admin"
+      alt="Postingan Admin"
+      style="width:100%;border-radius:10px;margin-bottom:10px;"
+    />
+
+    <p style="font-weight:bold;color:#1976d2;">Komentar:</p>
+
+    <div id="commentList" style="margin-top:10px;font-size:14px;"></div>
+
+    <textarea 
+      id="commentInput"
+      placeholder="Tulis komentar kamu..."
+      style="
+        width:100%;
+        margin-top:10px;
+        padding:8px;
+        border-radius:8px;
+        border:1px solid #ccc;
+      "
+    ></textarea>
+
+    <button 
+      onclick="addComment()"
+      style="
+        margin-top:8px;
+        background:#1976d2;
+        color:white;
+        border:none;
+        padding:8px 12px;
+        border-radius:8px;
+        cursor:pointer;
+      "
+    >
+      Kirim
+    </button>
+  </div>
+</div>
 
