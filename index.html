@@ -149,7 +149,7 @@
 
  const holidays = {
   // ===== NASIONAL =====
-  "2026-01-0": "Tahun Baru Masehi",
+  "2026-01-1": "Tahun Baru Masehi",
   "2026-04-21": "Hari Kartini",
   "2026-05-01": "Hari Buruh Internasional",
   "2026-08-17": "Hari Kemerdekaan Republik Indonesia",
@@ -201,7 +201,10 @@
 
     for (let d = 1; d <= totalDays; d++) {
       const date = new Date(2026, m, d);
-      const dateStr = date.toISOString().split("T")[0];
+      const year = date.getFullYear();
+      const monthNum = String(m + 1).padStart(2, "0");
+      const dayNum = String(d).padStart(2, "0");
+      const dateStr = `${year}-${monthNum}-${dayNum}`;
 
       let className = "day";
 
