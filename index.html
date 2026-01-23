@@ -273,20 +273,6 @@
        }
       
     container.appendChild(monthDiv);
-  });
-  if (holidays[dateStr]) {
-  holidays[dateStr].forEach(event => {
-    if (typeof event === "string") {
-      // Hari libur nasional / agama
-      className += " holiday";
-      holidayNotes.push(`${d} ${month} – ${event}`);
-    } else if (event.type === "posmar") {
-      // Event POSMAR
-      className += " posmar";
-      holidayNotes.push(`🔵 ${d} ${month} – ${event.name}`);
-    }
-  });
-}
 </script>
 
   <!-- CHAT PAGE -->
