@@ -252,7 +252,29 @@
 
     monthDiv.appendChild(grid);
 
-if (holidays[dateStr]) {
+// ===== KETERANGAN LIBUR BULANAN ===== 
+    if (holidayNotes.length > 0) {
+      const noteDiv = document.createElement("div");
+      noteDiv.style.marginTop = "10px";
+      noteDiv.innerHTML =
+        <div style="
+        background:#fff;
+      border-radius:10px;
+      padding:10px;
+      font-size:14px;
+      box-shadow:0 2px 5px rgba(0,0,0,0.1)">
+      <b style="color:red;">🔴 Keterangan Hari Libur:</b>
+      <ul style="margin-top:5px;padding-left:18px;"> 
+      ${holidayNotes.map(h => <li>${h}</li>).join("")}
+      </ul>
+      </div>
+      ; 
+      monthDiv.appendChild(noteDiv); 
+       }
+      
+    container.appendChild(monthDiv);
+  });
+  if (holidays[dateStr]) {
   holidays[dateStr].forEach(event => {
     if (typeof event === "string") {
       // Hari libur nasional / agama
@@ -265,8 +287,6 @@ if (holidays[dateStr]) {
     }
   });
 }
-    container.appendChild(monthDiv);
-  });
 </script>
 
   <!-- CHAT PAGE -->
