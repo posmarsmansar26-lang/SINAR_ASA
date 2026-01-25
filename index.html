@@ -64,16 +64,51 @@ footer{
 footer span{cursor:pointer;}
 </style>
 </head>
+  <script>
+/* 💬 CHAT ASPIRASI */
+const chatBox = document.getElementById("chatBox");
+const chatInput = document.getElementById("chatInput");
 
-<body>
+function loadChat(){
+  const chats = JSON.parse(localStorage.getItem("aspirasiChats")) || [];
+  chatBox.innerHTML = "";
+  chats.forEach(c=>{
+    const div = document.createElement("div");
+    div.style.marginBottom="6px";
+    div.textContent = "💬 " + c;
+    chatBox.appendChild(div);
+  });
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
 
-<header><h1>Sinar Asa</h1></header>
+function sendChat(){
+  const text = chatInput.value.trim();
+  if(!text) return;
 
+  const chats = JSON.parse(localStorage.getItem("aspirasiChats")) || [];
+  chats.push(text);
+  localStorage.setItem("aspirasiChats", JSON.stringify(chats));
+
+  chatInput.value="";
+  loadChat();
+}
+
+loadChat();
+</script>
+
+<!-- HOME -->
 <div id="home" class="page active">
-  <div style="background:white;padding:20px;border-radius:12px;text-align:center;">
-    💙 SINAR ASA 💙<br>
-    Sarana Informasi dan Aspirasi Anak SMANSAR
-  </div>
+  ...
+</div>
+
+<!-- CALENDAR -->
+<div id="calendar" class="page">
+  ...
+</div>
+
+<!-- CHAT ASPIRASI -->
+<div id="chat" class="page">
+  ...
 </div>
 
 <div id="calendar" class="page">
@@ -82,10 +117,11 @@ Kalender Tahun 2026
 </h2>
 <div id="calendarContainer"></div>
 </div>
-
+  
 <footer>
-<span onclick="showPage('home')">🏠</span>
-<span onclick="showPage('calendar')">📅</span>
+  <span onclick="showPage('home')">🏠</span>
+  <span onclick="showPage('calendar')">📅</span>
+  <span onclick="showPage('chat')">💬</span>
 </footer>
 
 <script>
@@ -221,6 +257,33 @@ months.forEach((month,m)=>{
   container.appendChild(monthDiv);
 });
 </script>
+
+  <!-- CHAT ASPIRASI -->
+<div id="chat" class="page">
+  <h2 style="text-align:center;color:#1976d2;">Chat Aspirasi</h2>
+
+  <div id="chatBox" style="
+    background:white;
+    border-radius:10px;
+    padding:10px;
+    height:250px;
+    overflow-y:auto;
+    margin-bottom:10px;
+    font-size:14px;
+  "></div>
+
+  <textarea
+    id="chatInput"
+    placeholder="Tulis aspirasi kamu..."
+    style="width:100%;padding:8px;border-radius:8px;"
+  ></textarea>
+
+  <button onclick="sendChat()"
+    style="margin-top:8px;background:#1976d2;color:white;
+    border:none;padding:8px 12px;border-radius:8px;">
+    Kirim
+  </button>
+</div>
 
 </body>
 </html>
