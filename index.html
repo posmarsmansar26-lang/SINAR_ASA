@@ -84,9 +84,8 @@ Kalender Tahun 2026
 </div>
 
 <footer>
-  <span onclick="showPage('home')">🏠</span>
-  <span onclick="showPage('calendar')">📅</span>
-  <span onclick="showPage('chat')">💬</span>
+<span onclick="showPage('home')">🏠</span>
+<span onclick="showPage('calendar')">📅</span>
 </footer>
 
 <script>
@@ -161,44 +160,44 @@ const container=document.getElementById("calendarContainer");
 months.forEach((month,m)=>{
   const monthDiv=document.createElement("div");
   monthDiv.className="month";
-  monthDiv.innerHTML=<h3>${month} 2026</h3>;
+  monthDiv.innerHTML=`<h3>${month} 2026</h3>`;
 
   const grid=document.createElement("div");
   grid.className="calendar-grid";
 
-  days.forEach(d=>grid.innerHTML+=<div class="day header">${d}</div>);
+  days.forEach(d=>grid.innerHTML+=`<div class="day header">${d}</div>`);
 
   const firstDay=new Date(2026,m,1).getDay();
   const totalDays=new Date(2026,m+1,0).getDate();
 
-  for(let i=0;i<firstDay;i++) grid.innerHTML+=<div class="day"></div>;
+  for(let i=0;i<firstDay;i++) grid.innerHTML+=`<div class="day"></div>`;
 
   let holidayNotes=[];
   let internationalNotes=[];
   let posmarNotes=[];
 
   for(let d=1;d<=totalDays;d++){
-    const dateStr=2026-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")};
+    const dateStr=`2026-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
     let cls="day";
 
     if(new Date(2026,m,d).getDay()===0) cls+=" sunday";
 
     if(holidays[dateStr]){
       cls+=" holiday";
-      holidayNotes.push(🔴 ${d} ${month} – ${holidays[dateStr]});
+      holidayNotes.push(`🔴 ${d} ${month} – ${holidays[dateStr]}`);
     }
 
     if(internationalDays[dateStr]){
       cls+=" international";
-      internationalNotes.push(🟠 ${d} ${month} – ${internationalDays[dateStr]});
+      internationalNotes.push(`🟠 ${d} ${month} – ${internationalDays[dateStr]}`);
     }
 
     if(posmarEvents[dateStr]){
       cls+=" posmar";
-      posmarNotes.push(🔵 ${d} ${month} – ${posmarEvents[dateStr]});
+      posmarNotes.push(`🔵 ${d} ${month} – ${posmarEvents[dateStr]}`);
     }
 
-    grid.innerHTML+=<div class="${cls}">${d}</div>;
+    grid.innerHTML+=`<div class="${cls}">${d}</div>`;
   }
 
   monthDiv.appendChild(grid);
@@ -225,44 +224,3 @@ months.forEach((month,m)=>{
 
 </body>
 </html>
-
-<!-- CHAT ASPIRASI -->
-<div id="chat" class="page">
-  <h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
-    Chat Aspirasi
-  </h2>
-
-  <div id="chatBox" style="
-    background:white;
-    border-radius:12px;
-    padding:10px;
-    height:250px;
-    overflow-y:auto;
-    box-shadow:0 2px 6px rgba(0,0,0,0.1);
-    font-size:14px;
-  "></div>
-
-  <textarea
-    id="chatInput"
-    placeholder="Tulis aspirasi kamu..."
-    style="
-      width:100%;
-      margin-top:10px;
-      padding:8px;
-      border-radius:8px;
-      border:1px solid #ccc;
-    "
-  ></textarea>
-
-  <button onclick="sendChat()" style="
-    margin-top:8px;
-    background:#1976d2;
-    color:white;
-    border:none;
-    padding:8px 12px;
-    border-radius:8px;
-    cursor:pointer;
-  ">
-    Kirim
-  </button>
-</div>
