@@ -160,44 +160,44 @@ const container=document.getElementById("calendarContainer");
 months.forEach((month,m)=>{
   const monthDiv=document.createElement("div");
   monthDiv.className="month";
-  monthDiv.innerHTML=`<h3>${month} 2026</h3>`;
+  monthDiv.innerHTML=<h3>${month} 2026</h3>;
 
   const grid=document.createElement("div");
   grid.className="calendar-grid";
 
-  days.forEach(d=>grid.innerHTML+=`<div class="day header">${d}</div>`);
+  days.forEach(d=>grid.innerHTML+=<div class="day header">${d}</div>);
 
   const firstDay=new Date(2026,m,1).getDay();
   const totalDays=new Date(2026,m+1,0).getDate();
 
-  for(let i=0;i<firstDay;i++) grid.innerHTML+=`<div class="day"></div>`;
+  for(let i=0;i<firstDay;i++) grid.innerHTML+=<div class="day"></div>;
 
   let holidayNotes=[];
   let internationalNotes=[];
   let posmarNotes=[];
 
   for(let d=1;d<=totalDays;d++){
-    const dateStr=`2026-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+    const dateStr=2026-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")};
     let cls="day";
 
     if(new Date(2026,m,d).getDay()===0) cls+=" sunday";
 
     if(holidays[dateStr]){
       cls+=" holiday";
-      holidayNotes.push(`🔴 ${d} ${month} – ${holidays[dateStr]}`);
+      holidayNotes.push(🔴 ${d} ${month} – ${holidays[dateStr]});
     }
 
     if(internationalDays[dateStr]){
       cls+=" international";
-      internationalNotes.push(`🟠 ${d} ${month} – ${internationalDays[dateStr]}`);
+      internationalNotes.push(🟠 ${d} ${month} – ${internationalDays[dateStr]});
     }
 
     if(posmarEvents[dateStr]){
       cls+=" posmar";
-      posmarNotes.push(`🔵 ${d} ${month} – ${posmarEvents[dateStr]}`);
+      posmarNotes.push(🔵 ${d} ${month} – ${posmarEvents[dateStr]});
     }
 
-    grid.innerHTML+=`<div class="${cls}">${d}</div>`;
+    grid.innerHTML+=<div class="${cls}">${d}</div>;
   }
 
   monthDiv.appendChild(grid);
