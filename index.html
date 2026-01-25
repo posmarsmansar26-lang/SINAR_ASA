@@ -66,27 +66,27 @@ footer span{cursor:pointer;}
 </head>
 
 <body>
-<!-- HOME -->
+
+<header><h1>Sinar Asa</h1></header>
+
 <div id="home" class="page active">
-  ...
+  <div style="background:white;padding:20px;border-radius:12px;text-align:center;">
+    💙 SINAR ASA 💙<br>
+    Sarana Informasi dan Aspirasi Anak SMANSAR
+  </div>
 </div>
 
-<!-- CALENDAR -->
 <div id="calendar" class="page">
-  ...
-</div>
-
-<!-- CHAT ASPIRASI -->
-<div id="chat" class="page">
-  ...
+<h2 style="text-align:center;color:#1976d2;margin-bottom:20px;">
+Kalender Tahun 2026
+</h2>
+<div id="calendarContainer"></div>
 </div>
 
 <footer>
 <span onclick="showPage('home')">🏠</span>
 <span onclick="showPage('calendar')">📅</span>
-<span onclick="showPage('chat')">💬</span>
 </footer>
-
 
 <script>
 function showPage(id){
@@ -97,7 +97,9 @@ function showPage(id){
 /* 🔴 LIBUR NASIONAL */
 const holidays={
   "2026-01-01": "Tahun Baru Masehi",
-  "2026-01-16": "Isra' Mi'raj Nabi Muhammad
+  "2026-01-16": "Isra' Mi'raj Nabi Muhammad",
+  "2026-01-22": "Isra' Mi'raj Taahun 2026",
+  "2026-01-28": "Expo Campus SPARK",
   "2026-02-16": "Cuti Bersama Tahun Baru Imlek",
   "2026-02-17": "Tahun Baru Imlek",
   "2026-02-20": "Ramadhan",
@@ -221,44 +223,4 @@ months.forEach((month,m)=>{
 </script>
 
 </body>
-</html> 
-
-<!-- CHAT ASPIRASI -->
-<div id="chat" class="page">
-  <h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
-    💬 Chat Aspirasi
-  </h2>
-
-  <div id="chatBox" style="
-    background:white;
-    border-radius:12px;
-    padding:15px;
-    height:300px;
-    overflow-y:auto;
-    box-shadow:0 2px 6px rgba(0,0,0,.1);
-    margin-bottom:15px;
-  ">
-  </div>
-
-  <div style="display:flex;gap:10px;">
-    <input id="chatInput" type="text" placeholder="Tulis komentar kamu..."
-      style="
-        flex:1;
-        padding:10px;
-        border-radius:8px;
-        border:1px solid #ccc;
-        font-family:'Times New Roman', serif;
-      ">
-    <button onclick="sendChat()"
-      style="
-        background:#1976d2;
-        color:white;
-        border:none;
-        padding:10px 15px;
-        border-radius:8px;
-        cursor:pointer;
-      ">
-      Kirim
-    </button>
-  </div>
-</div>
+</html>
