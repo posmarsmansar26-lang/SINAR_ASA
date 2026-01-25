@@ -66,21 +66,19 @@ footer span{cursor:pointer;}
 </head>
 
 <body>
-
-<header><h1>Sinar Asa</h1></header>
-
+<!-- HOME -->
 <div id="home" class="page active">
-  <div style="background:white;padding:20px;border-radius:12px;text-align:center;">
-    💙 SINAR ASA 💙<br>
-    Sarana Informasi dan Aspirasi Anak SMANSAR
-  </div>
+  ...
 </div>
 
+<!-- CALENDAR -->
 <div id="calendar" class="page">
-<h2 style="text-align:center;color:#1976d2;margin-bottom:20px;">
-Kalender Tahun 2026
-</h2>
-<div id="calendarContainer"></div>
+  ...
+</div>
+
+<!-- CHAT ASPIRASI -->
+<div id="chat" class="page">
+  ...
 </div>
 
 <footer>
@@ -99,9 +97,7 @@ function showPage(id){
 /* 🔴 LIBUR NASIONAL */
 const holidays={
   "2026-01-01": "Tahun Baru Masehi",
-  "2026-01-16": "Isra' Mi'raj Nabi Muhammad",
-  "2026-01-22": "Isra' Mi'raj Taahun 2026",
-  "2026-01-28": "Expo Campus SPARK",
+  "2026-01-16": "Isra' Mi'raj Nabi Muhammad
   "2026-02-16": "Cuti Bersama Tahun Baru Imlek",
   "2026-02-17": "Tahun Baru Imlek",
   "2026-02-20": "Ramadhan",
@@ -222,6 +218,37 @@ months.forEach((month,m)=>{
 
   container.appendChild(monthDiv);
 });
+</script>
+  <script>
+/* 💬 CHAT ASPIRASI */
+const chatBox = document.getElementById("chatBox");
+const chatInput = document.getElementById("chatInput");
+
+function loadChat(){
+  const chats = JSON.parse(localStorage.getItem("aspirasiChats")) || [];
+  chatBox.innerHTML = "";
+  chats.forEach(c=>{
+    const div = document.createElement("div");
+    div.style.marginBottom="8px";
+    div.innerHTML = `💬 ${c}`;
+    chatBox.appendChild(div);
+  });
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function sendChat(){
+  const text = chatInput.value.trim();
+  if(!text) return;
+
+  const chats = JSON.parse(localStorage.getItem("aspirasiChats")) || [];
+  chats.push(text);
+  localStorage.setItem("aspirasiChats", JSON.stringify(chats));
+
+  chatInput.value="";
+  loadChat();
+}
+
+loadChat();
 </script>
 
 </body>
