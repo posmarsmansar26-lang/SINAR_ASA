@@ -84,8 +84,9 @@ Kalender Tahun 2026
 </div>
 
 <footer>
-<span onclick="showPage('home')">🏠</span>
-<span onclick="showPage('calendar')">📅</span>
+  <span onclick="showPage('home')">🏠</span>
+  <span onclick="showPage('calendar')">📅</span>
+  <span onclick="showPage('chat')">💬</span>
 </footer>
 
 <script>
@@ -224,3 +225,44 @@ months.forEach((month,m)=>{
 
 </body>
 </html>
+
+<!-- CHAT ASPIRASI -->
+<div id="chat" class="page">
+  <h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
+    Chat Aspirasi
+  </h2>
+
+  <div id="chatBox" style="
+    background:white;
+    border-radius:12px;
+    padding:10px;
+    height:250px;
+    overflow-y:auto;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    font-size:14px;
+  "></div>
+
+  <textarea
+    id="chatInput"
+    placeholder="Tulis aspirasi kamu..."
+    style="
+      width:100%;
+      margin-top:10px;
+      padding:8px;
+      border-radius:8px;
+      border:1px solid #ccc;
+    "
+  ></textarea>
+
+  <button onclick="sendChat()" style="
+    margin-top:8px;
+    background:#1976d2;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
+  ">
+    Kirim
+  </button>
+</div>
