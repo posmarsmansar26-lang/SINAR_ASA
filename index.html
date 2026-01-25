@@ -13,7 +13,7 @@
 }
 body{
   background:#f4f8ff;
-  padding-bottom:80px;
+  padding-bottom:90px;
 }
 header{
   background:#1976d2;
@@ -24,6 +24,15 @@ header{
 .page{display:none;padding:20px;max-width:900px;margin:auto;}
 .page.active{display:block;}
 
+/* HOME */
+.home-box{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+}
+
+/* KALENDER */
 .month{
   background:white;
   border-radius:12px;
@@ -50,6 +59,32 @@ header{
 .international{background:#ffe0b2;color:#e65100;font-weight:bold;}
 .posmar{background:#64b5f6;color:#0d47a1;font-weight:bold;}
 
+/* CHAT */
+#chatBox{
+  background:white;
+  border-radius:12px;
+  padding:12px;
+  height:280px;
+  overflow-y:auto;
+  margin-bottom:10px;
+}
+.chat-item{margin-bottom:6px;}
+textarea{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+}
+button{
+  width:100%;
+  padding:10px;
+  background:#1976d2;
+  color:white;
+  border:none;
+  border-radius:10px;
+  margin-top:8px;
+}
+
+/* FOOTER */
 footer{
   position:fixed;
   bottom:0;
@@ -70,8 +105,8 @@ footer span{cursor:pointer;}
 <header><h1>Sinar Asa</h1></header>
 
 <div id="home" class="page active">
-  <div style="background:white;padding:20px;border-radius:12px;text-align:center;">
-    💙 SINAR ASA 💙<br>
+  <div class="home-box">
+    💙 <b>SINAR ASA</b> 💙<br><br>
     Sarana Informasi dan Aspirasi Anak SMANSAR
   </div>
 </div>
@@ -83,9 +118,19 @@ Kalender Tahun 2026
 <div id="calendarContainer"></div>
 </div>
 
+<div id="chat" class="page">
+<h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
+💬 Chat Aspirasi
+</h2>
+<div id="chatBox"></div>
+<textarea id="chatInput" placeholder="Tulis aspirasi kamu..."></textarea>
+<button onclick="sendChat()">Kirim</button>
+</div>
+
 <footer>
-<span onclick="showPage('home')">🏠</span>
-<span onclick="showPage('calendar')">📅</span>
+  <span onclick="showPage('home')">🏠</span>
+  <span onclick="showPage('calendar')">📅</span>
+  <span onclick="showPage('chat')">💬</span>
 </footer>
 
 <script>
@@ -96,61 +141,59 @@ function showPage(id){
 
 /* 🔴 LIBUR NASIONAL */
 const holidays={
-  "2026-01-01": "Tahun Baru Masehi",
-  "2026-01-16": "Isra' Mi'raj Nabi Muhammad",
-  "2026-01-22": "Isra' Mi'raj Taahun 2026",
-  "2026-01-28": "Expo Campus SPARK",
-  "2026-02-16": "Cuti Bersama Tahun Baru Imlek",
-  "2026-02-17": "Tahun Baru Imlek",
-  "2026-02-20": "Ramadhan",
-  "2026-03-18": "Cuti Bersama Hari Suci Nyepi",
-  "2026-03-19": "Hari Suci Nyepi",
-  "2026-03-20": "Cuti bersama Hari Raya Idul Fitri",
-  "2026-03-21": "Hari Raya Idul Fitri",
-  "2026-03-22": "Hari Raya Idul Fitri",
-  "2026-03-23": "Hari Raya Idul Fitri",
-  "2026-03-24": "Hari Raya Idul Fitri",
-  "2026-04-03": "Wafat Isa Al-masih",
-  "2026-04-05": "Hari Paskah",
-  "2026-04-21": "Hari Kartini",
-  "2026-05-01": "Hari Buruh Internasional",
-  "2026-05-02": "Hari Pendidikan Nasional",
-  "2026-05-14": "Hari Kenaikan Isa Al-masih",
-  "2026-05-02": "Cuti bersama kenaikan Isa Al-Masih",
-  "2026-05-20": "Hari Kebangkitan Nasional",
-  "2026-05-27": "Hari Raya Idhul Adha",
-  "2026-05-28": "Hari Raya Idhul Adha",
-  "2026-05-31": "Hari Raya Waisak",
-  "2026-06-01": "Hari Lahir Pancasila",
-  "2026-06-16": "1 Muharram",
-  "2026-07-23": "Hari Anak Nasional",
-  "2026-08-17": "Hari Kemerdekaan Republik Indonesia",
-  "2026-08-25": "Maulid Nabi Muhammad",
-  "2026-10-12": "Hari Jadi Jawa Timur",
-  "2026-10-22": "Hari Santri Nasional",
-  "2026-10-05": "Hari Guru Sedunia",
-  "2026-11-09": "Hari Jadi Tuban",
-  "2026-11-12": "Hari Ayah Nasional",
-  "2026-11-25": "Hari Guru Nasional",
-  "2026-12-22": "Hari Ibu Nasional",
-  "2026-12-24": "Cuti Hari Raya Natal",
-  "2026-12-25": "Hari Raya Natal",
+  "2026-01-01":"Tahun Baru Masehi",
+  "2026-01-16":"Isra' Mi'raj Nabi Muhammad",
+  "2026-01-22":"Isra' Mi'raj Tahun 2026",
+  "2026-01-28":"Expo Campus SPARK",
+  "2026-02-16":"Cuti Bersama Tahun Baru Imlek",
+  "2026-02-17":"Tahun Baru Imlek",
+  "2026-02-20":"Ramadhan",
+  "2026-03-18":"Cuti Bersama Hari Suci Nyepi",
+  "2026-03-19":"Hari Suci Nyepi",
+  "2026-03-20":"Cuti bersama Hari Raya Idul Fitri",
+  "2026-03-21":"Hari Raya Idul Fitri",
+  "2026-03-22":"Hari Raya Idul Fitri",
+  "2026-03-23":"Hari Raya Idul Fitri",
+  "2026-03-24":"Hari Raya Idul Fitri",
+  "2026-04-03":"Wafat Isa Al-masih",
+  "2026-04-05":"Hari Paskah",
+  "2026-04-21":"Hari Kartini",
+  "2026-05-01":"Hari Buruh Internasional",
+  "2026-05-02":"Hari Pendidikan Nasional",
+  "2026-05-14":"Hari Kenaikan Isa Al-masih",
+  "2026-05-20":"Hari Kebangkitan Nasional",
+  "2026-05-27":"Hari Raya Idhul Adha",
+  "2026-05-28":"Hari Raya Idhul Adha",
+  "2026-05-31":"Hari Raya Waisak",
+  "2026-06-01":"Hari Lahir Pancasila",
+  "2026-06-16":"1 Muharram",
+  "2026-07-23":"Hari Anak Nasional",
+  "2026-08-17":"Hari Kemerdekaan RI",
+  "2026-08-25":"Maulid Nabi Muhammad",
+  "2026-10-05":"Hari Guru Sedunia",
+  "2026-10-12":"Hari Jadi Jawa Timur",
+  "2026-10-22":"Hari Santri Nasional",
+  "2026-11-09":"Hari Jadi Tuban",
+  "2026-11-12":"Hari Ayah Nasional",
+  "2026-11-25":"Hari Guru Nasional",
+  "2026-12-22":"Hari Ibu Nasional",
+  "2026-12-24":"Cuti Hari Raya Natal",
+  "2026-12-25":"Hari Raya Natal"
 };
 
 /* 🟠 INTERNASIONAL */
 const internationalDays={
- "2026-03-20": "Hari Kebahagiaan Internasional",
-  "2026-12-25": "Hari Raya Natal",
-  "2026-07-05": "Hari Lingkungan Hidup",
-  "2026-12-01": "Hari AIDS Sedunia",
-  "2026-12-10": "Hari Hak Asasi Manusia",
-  "2026-03-27": "Hari Teater Sedunia",
+  "2026-03-20":"Hari Kebahagiaan Internasional",
+  "2026-03-27":"Hari Teater Sedunia",
+  "2026-07-05":"Hari Lingkungan Hidup",
+  "2026-12-01":"Hari AIDS Sedunia",
+  "2026-12-10":"Hari Hak Asasi Manusia"
 };
 
 /* 🔵 EVENT POSMAR */
 const posmarEvents={
-   "2026-01-28": "Expo Campus SPARK",
-   "2026-01-16": "Isra' Mi'raj Nabi Muhammad",
+  "2026-01-16":"Isra' Mi'raj Nabi Muhammad",
+  "2026-01-28":"Expo Campus SPARK"
 };
 
 const months=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
@@ -164,62 +207,60 @@ months.forEach((month,m)=>{
 
   const grid=document.createElement("div");
   grid.className="calendar-grid";
-
   days.forEach(d=>grid.innerHTML+=`<div class="day header">${d}</div>`);
 
   const firstDay=new Date(2026,m,1).getDay();
   const totalDays=new Date(2026,m+1,0).getDate();
-
   for(let i=0;i<firstDay;i++) grid.innerHTML+=`<div class="day"></div>`;
 
-  let holidayNotes=[];
-  let internationalNotes=[];
-  let posmarNotes=[];
-
+  let h=[],iD=[],p=[];
   for(let d=1;d<=totalDays;d++){
     const dateStr=`2026-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
     let cls="day";
-
     if(new Date(2026,m,d).getDay()===0) cls+=" sunday";
-
-    if(holidays[dateStr]){
-      cls+=" holiday";
-      holidayNotes.push(`🔴 ${d} ${month} – ${holidays[dateStr]}`);
-    }
-
-    if(internationalDays[dateStr]){
-      cls+=" international";
-      internationalNotes.push(`🟠 ${d} ${month} – ${internationalDays[dateStr]}`);
-    }
-
-    if(posmarEvents[dateStr]){
-      cls+=" posmar";
-      posmarNotes.push(`🔵 ${d} ${month} – ${posmarEvents[dateStr]}`);
-    }
-
+    if(holidays[dateStr]){cls+=" holiday"; h.push(`🔴 ${d} ${month} – ${holidays[dateStr]}`);}
+    if(internationalDays[dateStr]){cls+=" international"; iD.push(`🟠 ${d} ${month} – ${internationalDays[dateStr]}`);}
+    if(posmarEvents[dateStr]){cls+=" posmar"; p.push(`🔵 ${d} ${month} – ${posmarEvents[dateStr]}`);}
     grid.innerHTML+=`<div class="${cls}">${d}</div>`;
   }
 
   monthDiv.appendChild(grid);
-
-  if(holidayNotes.length || internationalNotes.length || posmarNotes.length){
+  if(h.length||iD.length||p.length){
     const note=document.createElement("div");
     note.style.marginTop="10px";
     note.innerHTML=`
-      <b style="color:red;">🔴 Hari Libur Nasional</b><br>
-      ${holidayNotes.join("<br>")||"-"}
-      <br><br>
-      <b style="color:orange;">🟠 Hari Internasional</b><br>
-      ${internationalNotes.join("<br>")||"-"}
-      <br><br>
-      <b style="color:#1976d2;">🔵 Event POSMAR</b><br>
-      ${posmarNotes.join("<br>")||"-"}
+      <b style="color:red;">🔴 Hari Libur Nasional</b><br>${h.join("<br>")||"-"}
+      <br><br><b style="color:orange;">🟠 Hari Internasional</b><br>${iD.join("<br>")||"-"}
+      <br><br><b style="color:#1976d2;">🔵 Event POSMAR</b><br>${p.join("<br>")||"-"}
     `;
     monthDiv.appendChild(note);
   }
-
   container.appendChild(monthDiv);
 });
+
+/* CHAT */
+const chatBox=document.getElementById("chatBox");
+const chatInput=document.getElementById("chatInput");
+
+function loadChat(){
+  const chats=JSON.parse(localStorage.getItem("aspirasiChats"))||[];
+  chatBox.innerHTML="";
+  chats.forEach(c=>{
+    const div=document.createElement("div");
+    div.className="chat-item";
+    div.textContent="💬 "+c;
+    chatBox.appendChild(div);
+  });
+}
+function sendChat(){
+  if(!chatInput.value.trim())return;
+  const chats=JSON.parse(localStorage.getItem("aspirasiChats"))||[];
+  chats.push(chatInput.value.trim());
+  localStorage.setItem("aspirasiChats",JSON.stringify(chats));
+  chatInput.value="";
+  loadChat();
+}
+loadChat();
 </script>
 
 </body>
