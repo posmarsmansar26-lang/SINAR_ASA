@@ -1,123 +1,119 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sinar Asa</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sinar Asa</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, montserrat;
-    }
-
-    .posmar {
-  background: #64b5f6;
-  color: #0d47a1;
-  font-weight: bold;
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:"Times New Roman", serif;
 }
-    body {
-      background: #f4f8ff;
-      padding-bottom: 80px;
-    }
 
-    header {
-      background: #1976d2;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+body{
+  background:#f4f8ff;
+  padding-bottom:80px;
+}
 
-    header h1 {
-      font-size: 32px;
-      letter-spacing: 2px;
-    }
+header{
+  background:#1976d2;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
 
-    .page {
-      display: none;
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
+.page{
+  display:none;
+  padding:20px;
+  max-width:900px;
+  margin:auto;
+}
 
-    .page.active {
-      display: block;
-    }
+.page.active{
+  display:block;
+}
 
-    /* ===== HOME ===== */
-    .home-box {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      margin-top: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+/* HOME */
+.home-box{
+  background:white;
+  border-radius:12px;
+  padding:20px;
+  margin-top:20px;
+  box-shadow:0 2px 6px rgba(0,0,0,.1);
+  text-align:center;
+}
 
-    /* ===== CALENDAR ===== */
-    .month {
-      background: white;
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 25px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
+/* CALENDAR */
+.month{
+  background:white;
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:25px;
+  box-shadow:0 2px 6px rgba(0,0,0,.1);
+}
 
-    .month h3 {
-      text-align: center;
-      color: #1976d2;
-      margin-bottom: 10px;
-    }
+.month h3{
+  text-align:center;
+  color:#1976d2;
+  margin-bottom:10px;
+}
 
-    .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 5px;
-    }
+.calendar-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:5px;
+}
 
-    .day {
-      padding: 8px;
-      text-align: center;
-      border-radius: 6px;
-      font-size: 14px;
-    }
+.day{
+  padding:8px;
+  text-align:center;
+  border-radius:6px;
+  font-size:14px;
+}
 
-    .day.header {
-      background: #1976d2;
-      color: white;
-      font-weight: bold;
-    }
+.day.header{
+  background:#1976d2;
+  color:white;
+  font-weight:bold;
+}
 
-    .sunday {
-      color: red;
-      font-weight: bold;
-    }
+.sunday{
+  color:red;
+  font-weight:bold;
+}
 
-    .holiday {
-      background: #ffcdd2;
-      color: red;
-      font-weight: bold;
-    }
+.holiday{
+  background:#ffcdd2;
+  color:red;
+  font-weight:bold;
+}
 
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: #1976d2;
-      display: flex;
-      justify-content: space-around;
-      padding: 12px 0;
-      font-size: 22px;
-      color: white;
-    }
+/* POSMAR */
+.posmar{
+  background:#64b5f6;
+  color:#0d47a1;
+  font-weight:bold;
+}
 
-    footer span {
-      cursor: pointer;
-    }
-  </style>
+/* FOOTER */
+footer{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#1976d2;
+  display:flex;
+  justify-content:space-around;
+  padding:12px 0;
+  font-size:22px;
+  color:white;
+}
+footer span{cursor:pointer}
+</style>
 </head>
+
 <body>
 
 <header>
@@ -127,19 +123,43 @@
 <!-- HOME -->
 <div id="home" class="page active">
   <div class="home-box">
-    <p>💙SINAR ASA💙</p>
-    <p>Sarana INformasi dan AspiRasi Anak smanSAr</p>
+    <p><b>💙 SINAR ASA 💙</b></p>
+    <p>Sarana Informasi dan Aspirasi Anak SMANSA</p>
   </div>
 </div>
 
 <!-- CALENDAR -->
 <div id="calendar" class="page">
-  <h2 style="text-align:center;color:#1976d2;margin-bottom:20px;">
+  <h2 style="text-align:center;color:#1976d2;margin-bottom:20px">
     Kalender Tahun 2026
   </h2>
   <div id="calendarContainer"></div>
 </div>
-  
+
+<!-- CHAT -->
+<div id="chat" class="page">
+  <h2 style="text-align:center;color:#1976d2;margin-bottom:15px">
+    Ruang Diskusi OSIS
+  </h2>
+
+  <div style="background:white;border-radius:12px;padding:15px;box-shadow:0 2px 6px rgba(0,0,0,.1)">
+    <img src="https://via.placeholder.com/600x300?text=Postingan+Admin"
+         style="width:100%;border-radius:10px">
+
+    <p style="margin-top:10px;font-weight:bold;color:#1976d2">Komentar:</p>
+    <div id="commentList"></div>
+
+    <textarea id="commentInput"
+      placeholder="Tulis komentar kamu..."
+      style="width:100%;margin-top:10px;padding:8px;border-radius:8px"></textarea>
+
+    <button onclick="addComment()"
+      style="margin-top:8px;background:#1976d2;color:white;border:none;padding:8px 12px;border-radius:8px">
+      Kirim
+    </button>
+  </div>
+</div>
+
 <footer>
   <span onclick="showPage('home')">🏠</span>
   <span onclick="showPage('calendar')">📅</span>
@@ -147,194 +167,100 @@
 </footer>
 
 <script>
-  function showPage(pageId) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById(pageId).classList.add('active');
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+/* HARI LIBUR NASIONAL & INTERNASIONAL */
+const holidays={
+  "2026-01-01":"Tahun Baru Masehi",
+  "2026-03-19":"Hari Suci Nyepi",
+  "2026-03-21":"Idul Fitri",
+  "2026-04-21":"Hari Kartini",
+  "2026-05-01":"Hari Buruh",
+  "2026-06-01":"Hari Lahir Pancasila",
+  "2026-08-17":"Hari Kemerdekaan RI",
+  "2026-12-25":"Hari Raya Natal"
+};
+
+/* EVENT POSMAR */
+const posmarEvents={
+  "2026-01-28":"Expo Campus SPARK",
+  "2026-02-10":"Event POSMAR Sekolah"
+};
+
+const months=[
+  "Januari","Februari","Maret","April","Mei","Juni",
+  "Juli","Agustus","September","Oktober","November","Desember"
+];
+const days=["Min","Sen","Sel","Rab","Kam","Jum","Sab"];
+const container=document.getElementById("calendarContainer");
+
+months.forEach((month,m)=>{
+  const monthDiv=document.createElement("div");
+  monthDiv.className="month";
+  monthDiv.innerHTML=`<h3>${month} 2026</h3>`;
+
+  const grid=document.createElement("div");
+  grid.className="calendar-grid";
+
+  days.forEach(d=>grid.innerHTML+=`<div class="day header">${d}</div>`);
+
+  const firstDay=new Date(2026,m,1).getDay();
+  const totalDays=new Date(2026,m+1,0).getDate();
+
+  for(let i=0;i<firstDay;i++) grid.innerHTML+=`<div class="day"></div>`;
+
+  let holidayNotes=[],posmarNotes=[];
+
+  for(let d=1;d<=totalDays;d++){
+    const dateStr=`2026-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+    let cls="day";
+
+    if(new Date(2026,m,d).getDay()===0) cls+=" sunday";
+    if(holidays[dateStr]){
+      cls+=" holiday";
+      holidayNotes.push(`${d} ${month} – ${holidays[dateStr]}`);
+    }
+    if(posmarEvents[dateStr]){
+      cls+=" posmar";
+      posmarNotes.push(`🔵 ${d} ${month} – ${posmarEvents[dateStr]}`);
+    }
+    grid.innerHTML+=`<div class="${cls}">${d}</div>`;
   }
 
- const holidays = {
-  // ===== NASIONAL =====
-  "2026-01-01": "Tahun Baru Masehi",
-  "2026-01-16": "Isra' Mi'raj Nabi Muhammad",
-  "2026-01-22": "Isra' Mi'raj Taahun 2026",
-  "2026-01-28": "Expo Campus SPARK",
-  "2026-02-16": "Cuti Bersama Tahun Baru Imlek",
-  "2026-02-17": "Tahun Baru Imlek",
-  "2026-02-20": "Ramadhan",
-  "2026-03-18": "Cuti Bersama Hari Suci Nyepi",
-  "2026-03-19": "Hari Suci Nyepi",
-  "2026-03-20": "Cuti bersama Hari Raya Idul Fitri",
-  "2026-03-21": "Hari Raya Idul Fitri",
-  "2026-03-22": "Hari Raya Idul Fitri",
-  "2026-03-23": "Hari Raya Idul Fitri",
-  "2026-03-24": "Hari Raya Idul Fitri",
-  "2026-04-03": "Wafat Isa Al-masih",
-  "2026-04-05": "Hari Paskah",
-  "2026-04-21": "Hari Kartini",
-  "2026-05-01": "Hari Buruh Internasional",
-  "2026-05-02": "Hari Pendidikan Nasional",
-  "2026-05-14": "Hari Kenaikan Isa Al-masih",
-  "2026-05-02": "Cuti bersama kenaikan Isa Al-Masih",
-  "2026-05-20": "Hari Kebangkitan Nasional",
-  "2026-05-27": "Hari Raya Idhul Adha",
-  "2026-05-28": "Hari Raya Idhul Adha",
-  "2026-05-31": "Hari Raya Waisak",
-  "2026-06-01": "Hari Lahir Pancasila",
-  "2026-06-16": "1 Muharram",
-  "2026-07-23": "Hari Anak Nasional",
-  "2026-08-17": "Hari Kemerdekaan Republik Indonesia",
-  "2026-08-25": "Maulid Nabi Muhammad",
-  "2026-10-12": "Hari Jadi Jawa Timur",
-  "2026-10-22": "Hari Santri Nasional",
-  "2026-10-05": "Hari Guru Sedunia",
-  "2026-11-09": "Hari Jadi Tuban",
-  "2026-11-12": "Hari Ayah Nasional",
-  "2026-11-25": "Hari Guru Nasional",
-  "2026-12-22": "Hari Ibu Nasional",
-  "2026-12-24": "Cuti Hari Raya Natal",
-  "2026-12-25": "Hari Raya Natal",
+  monthDiv.appendChild(grid);
 
-  // ===== INTERNASIONAL =====
-  "2026-03-20": "Hari Kebahagiaan Internasional",
-  "2026-12-25": "Hari Raya Natal",
-  "2026-07-05": "Hari Lingkungan Hidup",
-  "2026-12-01": "Hari AIDS Sedunia",
-  "2026-12-10": "Hari Hak Asasi Manusia",
-  "2026-03-27": "Hari Teater Sedunia",
-  "2026-04-29": "Hari Tari Sedunia",
+  if(holidayNotes.length||posmarNotes.length){
+    const note=document.createElement("div");
+    note.style.marginTop="10px";
+    note.innerHTML=`
+      ${holidayNotes.length?`
+      <b style="color:red">🔴 Hari Libur:</b>
+      <ul>${holidayNotes.map(h=>`<li>${h}</li>`).join("")}</ul>`:""}
+      ${posmarNotes.length?`
+      <b style="color:#1976d2">🔵 Event POSMAR:</b>
+      <ul>${posmarNotes.map(p=>`<li>${p}</li>`).join("")}</ul>`:""}
+    `;
+    monthDiv.appendChild(note);
+  }
 
-    // ===== EVENT POSMAR =====
-   "2026-01-28": "Expo Campus SPARK",
-   "2026-01-16": "Isra' Mi'raj Nabi Muhammad",
+  container.appendChild(monthDiv);
+});
 
-};
-  
-  const months = [
-    "Januari","Februari","Maret","April","Mei","Juni",
-    "Juli","Agustus","September","Oktober","November","Desember"
-  ];
-
-  const days = ["Min","Sen","Sel","Rab","Kam","Jum","Sab"];
-  const container = document.getElementById("calendarContainer");
-
-  months.forEach((month, m) => {
-    const monthDiv = document.createElement("div");
-    monthDiv.className = "month";
-
-    monthDiv.innerHTML = `<h3>${month} 2026</h3>`;
-
-    const grid = document.createElement("div");
-    grid.className = "calendar-grid";
-
-    days.forEach(d => {
-      grid.innerHTML += `<div class="day header">${d}</div>`;
-    });
-
-    const firstDay = new Date(2026, m, 1).getDay();
-    const totalDays = new Date(2026, m + 1, 0).getDate();
-
-    for (let i = 0; i < firstDay; i++) {
-      grid.innerHTML += `<div class="day"></div>`;
-    }
-
-    let holidayNotes = [];
-
-    for (let d = 1; d <= totalDays; d++) {
-      const date = new Date(2026, m, d);
-      const year = date.getFullYear();
-      const monthNum = String(m + 1).padStart(2, "0");
-      const dayNum = String(d).padStart(2, "0");
-      const dateStr = `${year}-${monthNum}-${dayNum}`;
-
-      let className = "day";
-
-      if (date.getDay() === 0) className += " sunday";
-
-      if (holidays[dateStr]) {
-        className += " holiday";
-        holidayNotes.push(`${d} ${month} – ${holidays[dateStr]}`);
-      }
-
-      grid.innerHTML += `<div class="${className}">${d}</div>`;
-    }
-
-    monthDiv.appendChild(grid);
-
-    // ===== KETERANGAN LIBUR BULANAN =====
-    if (holidayNotes.length > 0) {
-      const noteDiv = document.createElement("div");
-      noteDiv.style.marginTop = "10px";
-      noteDiv.innerHTML = `
-        <div style="
-          background:#fff;
-          border-radius:10px;
-          padding:10px;
-          font-size:14px;
-          box-shadow:0 2px 5px rgba(0,0,0,0.1)">
-          <b style="color:red;">🔴 Keterangan Hari Libur:</b>
-           <b style="color:blue;">🔵 Event POSMAR:</b> 
-          <ul style="margin-top:5px;padding-left:18px;">
-            ${holidayNotes.map(h => `<li>${h}</li>`).join("")}
-          </ul>
-        </div>
-      `;
-      monthDiv.appendChild(noteDiv);
-    }
-
-    container.appendChild(monthDiv);
-  });
+/* KOMENTAR */
+function addComment(){
+  const input=document.getElementById("commentInput");
+  if(!input.value.trim())return;
+  const div=document.createElement("div");
+  div.textContent="• "+input.value;
+  document.getElementById("commentList").appendChild(div);
+  input.value="";
+}
 </script>
 
-  <!-- CHAT PAGE -->
-<div id="chat" class="page">
-  <h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
-    Ruang Diskusi OSIS
-  </h2>
+</body>
+</html>
 
-  <!-- POST ADMIN -->
-  <div style="
-    background:white;
-    border-radius:12px;
-    padding:15px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.1);
-    margin-bottom:15px;
-  ">
-    <img 
-      src="https://via.placeholder.com/600x300?text=Postingan+Admin"
-      alt="Postingan Admin"
-      style="width:100%;border-radius:10px;margin-bottom:10px;"
-    />
 
-    <p style="font-weight:bold;color:#1976d2;">Komentar:</p>
-
-    <div id="commentList" style="margin-top:10px;font-size:14px;"></div>
-
-    
-    <textarea 
-      id="commentInput"
-      placeholder="Tulis komentar kamu..."
-      style="
-        width:100%;
-        margin-top:10px;
-        padding:8px;
-        border-radius:8px;
-        border:1px solid #ccc;
-      "
-    ></textarea>
-
-    <button 
-      onclick="addComment()"
-      style="
-        margin-top:8px;
-        background:#1976d2;
-        color:white;
-        border:none;
-        padding:8px 12px;
-        border-radius:8px;
-        cursor:pointer;
-      "
-    >
-      Kirim
-    </button>
-  </div>
-</div>
