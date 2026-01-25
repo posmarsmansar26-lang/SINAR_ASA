@@ -142,64 +142,13 @@ function showPage(id){
 }
 
 /* DATA KALENDER */
-/* 🔴 LIBUR NASIONAL */
-const holidays={
-  "2026-01-01": "Tahun Baru Masehi",
-  "2026-01-16": "Isra' Mi'raj Nabi Muhammad",
-  "2026-01-22": "Isra' Mi'raj Taahun 2026",
-  "2026-01-28": "Expo Campus SPARK",
-  "2026-02-16": "Cuti Bersama Tahun Baru Imlek",
-  "2026-02-17": "Tahun Baru Imlek",
-  "2026-02-20": "Ramadhan",
-  "2026-03-18": "Cuti Bersama Hari Suci Nyepi",
-  "2026-03-19": "Hari Suci Nyepi",
-  "2026-03-20": "Cuti bersama Hari Raya Idul Fitri",
-  "2026-03-21": "Hari Raya Idul Fitri",
-  "2026-03-22": "Hari Raya Idul Fitri",
-  "2026-03-23": "Hari Raya Idul Fitri",
-  "2026-03-24": "Hari Raya Idul Fitri",
-  "2026-04-03": "Wafat Isa Al-masih",
-  "2026-04-05": "Hari Paskah",
-  "2026-04-21": "Hari Kartini",
-  "2026-05-01": "Hari Buruh Internasional",
-  "2026-05-02": "Hari Pendidikan Nasional",
-  "2026-05-14": "Hari Kenaikan Isa Al-masih",
-  "2026-05-02": "Cuti bersama kenaikan Isa Al-Masih",
-  "2026-05-20": "Hari Kebangkitan Nasional",
-  "2026-05-27": "Hari Raya Idhul Adha",
-  "2026-05-28": "Hari Raya Idhul Adha",
-  "2026-05-31": "Hari Raya Waisak",
-  "2026-06-01": "Hari Lahir Pancasila",
-  "2026-06-16": "1 Muharram",
-  "2026-07-23": "Hari Anak Nasional",
-  "2026-08-17": "Hari Kemerdekaan Republik Indonesia",
-  "2026-08-25": "Maulid Nabi Muhammad",
-  "2026-10-12": "Hari Jadi Jawa Timur",
-  "2026-10-22": "Hari Santri Nasional",
-  "2026-10-05": "Hari Guru Sedunia",
-  "2026-11-09": "Hari Jadi Tuban",
-  "2026-11-12": "Hari Ayah Nasional",
-  "2026-11-25": "Hari Guru Nasional",
-  "2026-12-22": "Hari Ibu Nasional",
-  "2026-12-24": "Cuti Hari Raya Natal",
-  "2026-12-25": "Hari Raya Natal",
-};
-
-/* 🟠 INTERNASIONAL */
-const internationalDays={
- "2026-03-20": "Hari Kebahagiaan Internasional",
-  "2026-12-25": "Hari Raya Natal",
-  "2026-07-05": "Hari Lingkungan Hidup",
-  "2026-12-01": "Hari AIDS Sedunia",
-  "2026-12-10": "Hari Hak Asasi Manusia",
-  "2026-03-27": "Hari Teater Sedunia",
-};
-
-/* 🔵 EVENT POSMAR */
-const posmarEvents={
-   "2026-01-28": "Expo Campus SPARK",
-   "2026-01-16": "Isra' Mi'raj Nabi Muhammad",
-};
+"2026-01-01": {text:"Tahun Baru", type:"holiday"},
+  "2026-01-16": {text:"Isra Mi'raj", type:"posmar"},
+  "2026-01-28": {text:"Expo Campus SPARK", type:"posmar"},
+  "2026-02-17": {text:"Tahun Baru Imlek", type:"holiday"},
+  "2026-03-20": {text:"Hari Kebahagiaan Internasional", type:"international"},
+  "2026-08-17": {text:"Hari Kemerdekaan RI", type:"holiday"},
+  "2026-12-25": {text:"Hari Raya Natal", type:"holiday"}
 
 /* BUAT KALENDER JANUARI */
 const calendarBox = document.getElementById("calendarBox");
