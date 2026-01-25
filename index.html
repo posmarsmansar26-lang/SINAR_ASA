@@ -10,7 +10,7 @@
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:"Times New Roman", serif;
+  font-family: "Times New Roman", serif;
 }
 
 body{
@@ -32,21 +32,8 @@ header{
   margin:auto;
 }
 
-.page.active{
-  display:block;
-}
+.page.active{display:block;}
 
-/* HOME */
-.home-box{
-  background:white;
-  border-radius:12px;
-  padding:20px;
-  margin-top:20px;
-  box-shadow:0 2px 6px rgba(0,0,0,.1);
-  text-align:center;
-}
-
-/* CALENDAR */
 .month{
   background:white;
   border-radius:12px;
@@ -91,14 +78,13 @@ header{
   font-weight:bold;
 }
 
-/* POSMAR */
+/* 🔵 EVENT POSMAR */
 .posmar{
   background:#64b5f6;
   color:#0d47a1;
   font-weight:bold;
 }
 
-/* FOOTER */
 footer{
   position:fixed;
   bottom:0;
@@ -110,60 +96,35 @@ footer{
   font-size:22px;
   color:white;
 }
-footer span{cursor:pointer}
+footer span{cursor:pointer;}
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>Sinar Asa</h1>
+<h1>Sinar Asa</h1>
 </header>
 
 <!-- HOME -->
 <div id="home" class="page active">
-  <div class="home-box">
-    <p><b>💙 SINAR ASA 💙</b></p>
-    <p>Sarana Informasi dan Aspirasi Anak SMANSA</p>
+  <div style="background:white;padding:20px;border-radius:12px;text-align:center;">
+    💙 SINAR ASA 💙<br>
+    Sarana Informasi dan Aspirasi Anak SMANSAR
   </div>
 </div>
 
 <!-- CALENDAR -->
 <div id="calendar" class="page">
-  <h2 style="text-align:center;color:#1976d2;margin-bottom:20px">
-    Kalender Tahun 2026
-  </h2>
-  <div id="calendarContainer"></div>
-</div>
-
-<!-- CHAT -->
-<div id="chat" class="page">
-  <h2 style="text-align:center;color:#1976d2;margin-bottom:15px">
-    Ruang Diskusi OSIS
-  </h2>
-
-  <div style="background:white;border-radius:12px;padding:15px;box-shadow:0 2px 6px rgba(0,0,0,.1)">
-    <img src="https://via.placeholder.com/600x300?text=Postingan+Admin"
-         style="width:100%;border-radius:10px">
-
-    <p style="margin-top:10px;font-weight:bold;color:#1976d2">Komentar:</p>
-    <div id="commentList"></div>
-
-    <textarea id="commentInput"
-      placeholder="Tulis komentar kamu..."
-      style="width:100%;margin-top:10px;padding:8px;border-radius:8px"></textarea>
-
-    <button onclick="addComment()"
-      style="margin-top:8px;background:#1976d2;color:white;border:none;padding:8px 12px;border-radius:8px">
-      Kirim
-    </button>
-  </div>
+<h2 style="text-align:center;color:#1976d2;margin-bottom:20px;">
+Kalender Tahun 2026
+</h2>
+<div id="calendarContainer"></div>
 </div>
 
 <footer>
-  <span onclick="showPage('home')">🏠</span>
-  <span onclick="showPage('calendar')">📅</span>
-  <span onclick="showPage('chat')">💬</span>
+<span onclick="showPage('home')">🏠</span>
+<span onclick="showPage('calendar')">📅</span>
 </footer>
 
 <script>
@@ -172,15 +133,13 @@ function showPage(id){
   document.getElementById(id).classList.add('active');
 }
 
-/* HARI LIBUR NASIONAL & INTERNASIONAL */
-const holidays={
- "2026-01-01": "Tahun Baru Masehi",
+/* 🔴 HARI LIBUR NASIONAL */
+const holidays = {
+  "2026-01-01": "Tahun Baru Masehi",
   "2026-01-16": "Isra' Mi'raj Nabi Muhammad",
-  "2026-01-22": "Isra' Mi'raj Taahun 2026",
-  "2026-01-28": "Expo Campus SPARK",
+  "2026-01-22": "Isra' Mi'raj Tahun 2026",
   "2026-02-16": "Cuti Bersama Tahun Baru Imlek",
   "2026-02-17": "Tahun Baru Imlek",
-  "2026-02-20": "Ramadhan",
   "2026-03-18": "Cuti Bersama Hari Suci Nyepi",
   "2026-03-19": "Hari Suci Nyepi",
   "2026-03-20": "Cuti bersama Hari Raya Idul Fitri",
@@ -188,50 +147,49 @@ const holidays={
   "2026-03-22": "Hari Raya Idul Fitri",
   "2026-03-23": "Hari Raya Idul Fitri",
   "2026-03-24": "Hari Raya Idul Fitri",
-  "2026-04-03": "Wafat Isa Al-masih",
+  "2026-04-03": "Wafat Isa Al-Masih",
   "2026-04-05": "Hari Paskah",
   "2026-04-21": "Hari Kartini",
   "2026-05-01": "Hari Buruh Internasional",
   "2026-05-02": "Hari Pendidikan Nasional",
-  "2026-05-14": "Hari Kenaikan Isa Al-masih",
-  "2026-05-02": "Cuti bersama kenaikan Isa Al-Masih",
+  "2026-05-14": "Hari Kenaikan Isa Al-Masih",
   "2026-05-20": "Hari Kebangkitan Nasional",
-  "2026-05-27": "Hari Raya Idhul Adha",
-  "2026-05-28": "Hari Raya Idhul Adha",
+  "2026-05-27": "Hari Raya Idul Adha",
+  "2026-05-28": "Hari Raya Idul Adha",
   "2026-05-31": "Hari Raya Waisak",
   "2026-06-01": "Hari Lahir Pancasila",
   "2026-06-16": "1 Muharram",
   "2026-07-23": "Hari Anak Nasional",
-  "2026-08-17": "Hari Kemerdekaan Republik Indonesia",
+  "2026-08-17": "Hari Kemerdekaan RI",
   "2026-08-25": "Maulid Nabi Muhammad",
+  "2026-10-05": "Hari Guru Sedunia",
   "2026-10-12": "Hari Jadi Jawa Timur",
   "2026-10-22": "Hari Santri Nasional",
-  "2026-10-05": "Hari Guru Sedunia",
   "2026-11-09": "Hari Jadi Tuban",
   "2026-11-12": "Hari Ayah Nasional",
   "2026-11-25": "Hari Guru Nasional",
   "2026-12-22": "Hari Ibu Nasional",
   "2026-12-24": "Cuti Hari Raya Natal",
-  "2026-12-25": "Hari Raya Natal",
-
-  // ===== INTERNASIONAL =====
-  "2026-03-20": "Hari Kebahagiaan Internasional",
-  "2026-12-25": "Hari Raya Natal",
-  "2026-07-05": "Hari Lingkungan Hidup",
-  "2026-12-01": "Hari AIDS Sedunia",
-  "2026-12-10": "Hari Hak Asasi Manusia",
-  "2026-03-27": "Hari Teater Sedunia",
-  "2026-04-29": "Hari Tari Sedunia",
-
-    // ===== EVENT POSMAR =====
-   "2026-01-28": "Expo Campus SPARK",
-   "2026-01-16": "Isra' Mi'raj Nabi Muhammad",
+  "2026-12-25": "Hari Raya Natal"
 };
 
-const months=[
-  "Januari","Februari","Maret","April","Mei","Juni",
-  "Juli","Agustus","September","Oktober","November","Desember"
-];
+/* 🟠 HARI INTERNASIONAL (DI TENGAH) */
+const internationalDays = {
+  "2026-03-20": "Hari Kebahagiaan Internasional",
+  "2026-03-27": "Hari Teater Sedunia",
+  "2026-04-29": "Hari Tari Sedunia",
+  "2026-07-05": "Hari Lingkungan Hidup",
+  "2026-12-01": "Hari AIDS Sedunia",
+  "2026-12-10": "Hari Hak Asasi Manusia"
+};
+
+/* 🔵 EVENT POSMAR */
+const posmarEvents = {
+  "2026-01-16": "Isra' Mi'raj (Event POSMAR)",
+  "2026-01-28": "Expo Campus SPARK"
+};
+
+const months=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
 const days=["Min","Sen","Sel","Rab","Kam","Jum","Sab"];
 const container=document.getElementById("calendarContainer");
 
@@ -250,21 +208,30 @@ months.forEach((month,m)=>{
 
   for(let i=0;i<firstDay;i++) grid.innerHTML+=`<div class="day"></div>`;
 
-  let holidayNotes=[],posmarNotes=[];
+  let holidayNotes=[];
+  let posmarNotes=[];
 
   for(let d=1;d<=totalDays;d++){
     const dateStr=`2026-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
     let cls="day";
 
     if(new Date(2026,m,d).getDay()===0) cls+=" sunday";
+
     if(holidays[dateStr]){
       cls+=" holiday";
-      holidayNotes.push(`${d} ${month} – ${holidays[dateStr]}`);
+      holidayNotes.push(`🔴 ${d} ${month} – ${holidays[dateStr]}`);
     }
+
+    if(internationalDays[dateStr]){
+  cls+=" holiday";
+  internationalNotes.push(`🟠 ${d} ${month} – ${internationalDays[dateStr]}`);
+  }
+
     if(posmarEvents[dateStr]){
       cls+=" posmar";
       posmarNotes.push(`🔵 ${d} ${month} – ${posmarEvents[dateStr]}`);
     }
+
     grid.innerHTML+=`<div class="${cls}">${d}</div>`;
   }
 
@@ -273,32 +240,24 @@ months.forEach((month,m)=>{
   if(holidayNotes.length||posmarNotes.length){
     const note=document.createElement("div");
     note.style.marginTop="10px";
-    note.innerHTML=`
-      ${holidayNotes.length?`
-      <b style="color:red">🔴 Hari Libur:</b>
-      <ul>${holidayNotes.map(h=>`<li>${h}</li>`).join("")}</ul>`:""}
-      ${posmarNotes.length?`
-      <b style="color:#1976d2">🔵 Event POSMAR:</b>
-      <ul>${posmarNotes.map(p=>`<li>${p}</li>`).join("")}</ul>`:""}
-    `;
+  note.innerHTML=`
+  <b style="color:red;">🔴 Hari Libur Nasional</b><br>
+  ${holidayNotes.join("<br>")}
+  <br><br>
+
+  <b style="color:orange;">🟠 Hari Internasional</b><br>
+  ${internationalNotes.join("<br>")}
+  <br><br>
+
+  <b style="color:#1976d2;">🔵 Event POSMAR</b><br>
+  ${posmarNotes.join("<br>")}
+`;
     monthDiv.appendChild(note);
   }
 
   container.appendChild(monthDiv);
 });
-
-/* KOMENTAR */
-function addComment(){
-  const input=document.getElementById("commentInput");
-  if(!input.value.trim())return;
-  const div=document.createElement("div");
-  div.textContent="• "+input.value;
-  document.getElementById("commentList").appendChild(div);
-  input.value="";
-}
 </script>
 
 </body>
 </html>
-
-
