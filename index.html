@@ -11,18 +11,6 @@
   padding:0;
   font-family:"Times New Roman", serif;
 }
-  .comment{
-  background:#e3f2fd;
-  padding:8px;
-  border-radius:8px;
-  margin-bottom:6px;
-  font-size:14px;
-}
-.admin-img{
-  max-width:100%;
-  border-radius:12px;
-  margin-bottom:10px;
-}
 body{
   background:#f4f8ff;
   padding-bottom:90px;
@@ -249,89 +237,3 @@ months.forEach((month,m)=>{
   }
   container.appendChild(monthDiv);
 });
-
-<!-- CHAT ASPIRASI -->
-<div id="chat" class="page">
-<h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
-💬 Chat Aspirasi
-</h2>
-
-<!-- ADMIN UPLOAD -->
-<div id="adminPanel" style="margin-bottom:15px;display:none;">
-  <input type="file" id="adminImage" accept="image/*">
-  <button onclick="uploadImage()">Upload Gambar (Admin)</button>
-</div>
-
-<!-- GAMBAR ADMIN -->
-<div id="imagePost" style="margin-bottom:15px;"></div>
-
-<!-- KOMENTAR -->
-<div id="chatBox"></div>
-
-<textarea id="chatInput" placeholder="Tulis komentar kamu..."></textarea>
-<button onclick="sendComment()">Kirim Komentar</button>
-</div>
-
-  <script>
-/* ===== MODE ADMIN ===== */
-const ADMIN_PASSWORD = "admin123"; // ganti bebas
-if(prompt("Masuk sebagai admin? (kosongkan jika bukan)") === ADMIN_PASSWORD){
-  document.getElementById("adminPanel").style.display="block";
-}
-
-/* ===== IMAGE POST ===== */
-const imagePost=document.getElementById("imagePost");
-
-function loadImage(){
-  const img=localStorage.getItem("adminImagePost");
-  imagePost.innerHTML = img
-    ? `<img src="${img}" class="admin-img"><b>Komentar Aspirasi:</b>`
-    : `<i>Belum ada postingan admin</i>`;
-}
-
-function uploadImage(){
-  const file=document.getElementById("adminImage").files[0];
-  if(!file) return;
-  const reader=new FileReader();
-  reader.onload=()=>{
-    localStorage.setItem("adminImagePost", reader.result);
-    loadImage();
-  };
-  reader.readAsDataURL(file);
-}
-
-/* ===== KOMENTAR ===== */
-const chatBox=document.getElementById("chatBox");
-const chatInput=document.getElementById("chatInput");
-
-function maskedName(){
-  return "Pengguna_" + Math.random().toString(36).substring(2,6) + "****";
-}
-
-function loadComments(){
-  const comments=JSON.parse(localStorage.getItem("comments"))||[];
-  chatBox.innerHTML="";
-  comments.forEach(c=>{
-    const div=document.createElement("div");
-    div.className="comment";
-    div.innerHTML=`<b>${c.user}</b><br>${c.text}`;
-    chatBox.appendChild(div);
-  });
-}
-
-function sendComment(){
-  if(!chatInput.value.trim()) return;
-  const comments=JSON.parse(localStorage.getItem("comments"))||[];
-  comments.push({
-    user: maskedName(),
-    text: chatInput.value.trim()
-  });
-  localStorage.setItem("comments",JSON.stringify(comments));
-  chatInput.value="";
-  loadComments();
-}
-
-loadImage();
-loadComments();
-</script>
-
