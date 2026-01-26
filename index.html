@@ -237,5 +237,38 @@ months.forEach((month,m)=>{
   }
   container.appendChild(monthDiv);
 });
+</script>
+
+<script>
+/* ===== CHAT ASPIRASI SEDERHANA ===== */
+const chatBox=document.getElementById("chatBox");
+const chatInput=document.getElementById("chatInput");
+
+function loadChat(){
+  const chats=JSON.parse(localStorage.getItem("aspirasiChats"))||[];
+  chatBox.innerHTML="";
+  chats.forEach(c=>{
+    const div=document.createElement("div");
+    div.className="chat-item";
+    div.textContent="💬 Pengguna_**** : "+c;
+    chatBox.appendChild(div);
+  });
+}
+
+function sendChat(){
+  const text=chatInput.value.trim();
+  if(!text) return;
+  const chats=JSON.parse(localStorage.getItem("aspirasiChats"))||[];
+  chats.push(text);
+  localStorage.setItem("aspirasiChats",JSON.stringify(chats));
+  chatInput.value="";
+  loadChat();
+}
+
+loadChat();
+</script>
+
+</body>
+</html>
 
   
