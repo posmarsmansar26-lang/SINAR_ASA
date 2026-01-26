@@ -240,35 +240,69 @@ months.forEach((month,m)=>{
 </script>
 
 <script>
-/* ===== CHAT ASPIRASI SEDERHANA ===== */
-const chatBox=document.getElementById("chatBox");
-const chatInput=document.getElementById("chatInput");
+/* ===== CHAT + ADMIN ===== */
+const chatBox = document.getElementById("chatBox");
+const chatInput = document.getElementById("chatInput");
+
+let isAdmin = false;
+const ADMIN_PASSWORD = "admin123"; // ganti sesukamu
+
+function toggleAdmin(){
+  if(isAdmin){
+    isAdmin = false;
+    alert("Mode admin dimatikan");
+    loadChat();
+    return;
+  }
+  const pass = prompt("Masukkan password admin:");
+  if(pass === ADMIN_PASSWORD){
+    isAdmin = true;
+    alert("Mode admin aktif");
+    loadChat();
+  }else{
+    alert("Password salah");
+  }
+}
 
 function loadChat(){
-  const chats=JSON.parse(localStorage.getItem("aspirasiChats"))||[];
-  chatBox.innerHTML="";
-  chats.forEach(c=>{
-    const div=document.createElement("div");
-    div.className="chat-item";
-    div.textContent="💬 Pengguna_**** : "+c;
+  const chats = JSON.parse(localStorage.getItem("aspirasiChats")) || [];
+  chatBox.innerHTML = "";
+
+  chats.forEach((c, index)=>{
+    const div = document.createElement("div");
+    div.className = "chat-item";
+
+    div.innerHTML = `
+      💬 <b>Pengguna_${String(index+1).padStart(3,"0")}</b>: ${c}
+      ${isAdmin ? `<button onclick="deleteChat(${index})" style="float:right;background:red;border:none;color:white;border-radius:5px;">❌</button>` : ""}
+    `;
+
     chatBox.appendChild(div);
   });
+
+  chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 function sendChat(){
-  const text=chatInput.value.trim();
+  const text = chatInput.value.trim();
   if(!text) return;
-  const chats=JSON.parse(localStorage.getItem("aspirasiChats"))||[];
+
+  const chats = JSON.parse(localStorage.getItem("aspirasiChats")) || [];
   chats.push(text);
-  localStorage.setItem("aspirasiChats",JSON.stringify(chats));
-  chatInput.value="";
+  localStorage.setItem("aspirasiChats", JSON.stringify(chats));
+
+  chatInput.value = "";
+  loadChat();
+}
+
+function deleteChat(index){
+  if(!isAdmin) return;
+  const chats = JSON.parse(localStorage.getItem("aspirasiChats")) || [];
+  chats.splice(index,1);
+  localStorage.setItem("aspirasiChats", JSON.stringify(chats));
   loadChat();
 }
 
 loadChat();
-</script>
-
-</body>
-</html>
 
   
