@@ -3,24 +3,56 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- 🔥 WAJIB AGAR TIDAK KECIL DI HP -->
+<!-- 🔥 INI YANG PALING PENTING UNTUK HP -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Sinar Asa</title>
 
 <style>
-/* ===== MODE HP ===== */
-@media (max-width:600px){
-  header h1{font-size:20px;}
-  .page{padding:12px;}
-  .month{padding:10px;}
-  .calendar-grid{gap:3px;}
-  .day{font-size:12px;padding:6px;}
-  textarea,button{font-size:14px;}
-  footer{font-size:20px;padding:10px 0;}
-  #chatBox{height:220px;}
-}
 
+  /* ===== MODE HP ===== */
+@media (max-width: 600px){
+
+  header h1{
+    font-size:20px;
+  }
+
+  .page{
+    padding:12px;
+  }
+
+  .month{
+    padding:10px;
+  }
+
+  .calendar-grid{
+    gap:3px;
+  }
+
+  .day{
+    font-size:12px;
+    padding:6px;
+  }
+
+  textarea{
+    font-size:14px;
+  }
+
+  button{
+    font-size:14px;
+    padding:8px;
+  }
+
+  footer{
+    font-size:20px;
+    padding:10px 0;
+  }
+
+  #chatBox{
+    height:220px;
+  }
+}
+  
 *{
   box-sizing:border-box;
   margin:0;
@@ -37,127 +69,8 @@ header{
   padding:20px;
   text-align:center;
 }
-.page{
-  display:none;
-  padding:20px;
-  max-width:900px;
-  margin:auto;
-}
-.page.active{display:block}
-
-/* HOME */
-.home-box{
-  background:white;
-  padding:20px;
-  border-radius:12px;
-  text-align:center;
-}
-
-/* KALENDER */
-.month{
-  background:white;
-  border-radius:12px;
-  padding:15px;
-  margin-bottom:25px;
-  box-shadow:0 2px 6px rgba(0,0,0,.1);
-}
-.month h3{text-align:center;color:#1976d2;margin-bottom:10px;}
-.calendar-grid{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:5px;
-}
-.day{
-  padding:8px;
-  text-align:center;
-  border-radius:6px;
-}
-.day.header{background:#1976d2;color:white;font-weight:bold}
-.sunday{color:red;font-weight:bold}
-.holiday{background:#ffcdd2;color:red}
-.international{background:#ffe0b2;color:#e65100}
-.posmar{background:#64b5f6;color:#0d47a1}
-
-/* CHAT */
-#chatBox{
-  background:white;
-  border-radius:12px;
-  padding:12px;
-  height:280px;
-  overflow-y:auto;
-  margin-bottom:10px;
-}
-.chat-item{margin-bottom:6px}
-textarea{
-  width:100%;
-  padding:10px;
-  border-radius:10px;
-}
-button{
-  width:100%;
-  padding:10px;
-  background:#1976d2;
-  color:white;
-  border:none;
-  border-radius:10px;
-  margin-top:8px;
-}
-
-/* FOOTER */
-footer{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  background:#1976d2;
-  display:flex;
-  justify-content:space-around;
-  padding:12px 0;
-  font-size:22px;
-  color:white;
-}
-footer span{cursor:pointer}
-</style>
-</head>
-
-<body>
-
-<header><h1>Sinar Asa</h1></header>
-
-<div id="home" class="page active">
-  <div class="home-box">
-    💙 <b>SINAR ASA</b> 💙<br><br>
-    Sarana Informasi dan Aspirasi Anak SMANSAR
-  </div>
-</div>
-
-<div id="calendar" class="page">
-<h2 style="text-align:center;color:#1976d2;margin-bottom:20px;">
-Kalender Tahun 2026
-</h2>
-<div id="calendarContainer"></div>
-</div>
-
-<div id="chat" class="page">
-<h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
-💬 Chat Aspirasi
-</h2>
-<div id="chatBox"></div>
-<textarea id="chatInput" placeholder="Tulis aspirasi kamu..."></textarea>
-<button onclick="sendChat()">Kirim</button>
-<button onclick="toggleAdmin()" style="background:#0d47a1;">Admin</button>
-</div>
-
-<footer>
-  <span onclick="showPage('home')">🏠</span>
-  <span onclick="showPage('calendar')">📅</span>
-  <span onclick="showPage('chat')">💬</span>
-</footer>
-
-<script>
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
+.page{display:none;padding:20px;max-width:900px;margin:auto;}
+.page.active{display:block;}
 
 /* HOME */
 .home-box{
