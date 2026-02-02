@@ -2,52 +2,25 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+
+<!-- 🔥 WAJIB AGAR TIDAK KECIL DI HP -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Sinar Asa</title>
 
 <style>
-  /* ===== MODE HP ===== */
-@media (max-width: 600px){
-
-  header h1{
-    font-size:20px;
-  }
-
-  .page{
-    padding:12px;
-  }
-
-  .month{
-    padding:10px;
-  }
-
-  .calendar-grid{
-    gap:3px;
-  }
-
-  .day{
-    font-size:12px;
-    padding:6px;
-  }
-
-  textarea{
-    font-size:14px;
-  }
-
-  button{
-    font-size:14px;
-    padding:8px;
-  }
-
-  footer{
-    font-size:20px;
-    padding:10px 0;
-  }
-
-  #chatBox{
-    height:220px;
-  }
+/* ===== MODE HP ===== */
+@media (max-width:600px){
+  header h1{font-size:20px;}
+  .page{padding:12px;}
+  .month{padding:10px;}
+  .calendar-grid{gap:3px;}
+  .day{font-size:12px;padding:6px;}
+  textarea,button{font-size:14px;}
+  footer{font-size:20px;padding:10px 0;}
+  #chatBox{height:220px;}
 }
-  
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -64,8 +37,13 @@ header{
   padding:20px;
   text-align:center;
 }
-.page{display:none;padding:20px;max-width:900px;margin:auto;}
-.page.active{display:block;}
+.page{
+  display:none;
+  padding:20px;
+  max-width:900px;
+  margin:auto;
+}
+.page.active{display:block}
 
 /* HOME */
 .home-box{
@@ -84,7 +62,6 @@ header{
   box-shadow:0 2px 6px rgba(0,0,0,.1);
 }
 .month h3{text-align:center;color:#1976d2;margin-bottom:10px;}
-
 .calendar-grid{
   display:grid;
   grid-template-columns:repeat(7,1fr);
@@ -94,13 +71,12 @@ header{
   padding:8px;
   text-align:center;
   border-radius:6px;
-  font-size:14px;
 }
-.day.header{background:#1976d2;color:white;font-weight:bold;}
-.sunday{color:red;font-weight:bold;}
-.holiday{background:#ffcdd2;color:red;font-weight:bold;}
-.international{background:#ffe0b2;color:#e65100;font-weight:bold;}
-.posmar{background:#64b5f6;color:#0d47a1;font-weight:bold;}
+.day.header{background:#1976d2;color:white;font-weight:bold}
+.sunday{color:red;font-weight:bold}
+.holiday{background:#ffcdd2;color:red}
+.international{background:#ffe0b2;color:#e65100}
+.posmar{background:#64b5f6;color:#0d47a1}
 
 /* CHAT */
 #chatBox{
@@ -111,7 +87,7 @@ header{
   overflow-y:auto;
   margin-bottom:10px;
 }
-.chat-item{margin-bottom:6px;}
+.chat-item{margin-bottom:6px}
 textarea{
   width:100%;
   padding:10px;
@@ -139,7 +115,7 @@ footer{
   font-size:22px;
   color:white;
 }
-footer span{cursor:pointer;}
+footer span{cursor:pointer}
 </style>
 </head>
 
@@ -168,6 +144,7 @@ Kalender Tahun 2026
 <div id="chatBox"></div>
 <textarea id="chatInput" placeholder="Tulis aspirasi kamu..."></textarea>
 <button onclick="sendChat()">Kirim</button>
+<button onclick="toggleAdmin()" style="background:#0d47a1;">Admin</button>
 </div>
 
 <footer>
@@ -182,170 +159,73 @@ function showPage(id){
   document.getElementById(id).classList.add('active');
 }
 
-/* 🔴 LIBUR NASIONAL */
-const holidays={
-  "2026-01-01":"Tahun Baru Masehi",
-  "2026-01-16":"Isra' Mi'raj Nabi Muhammad",
-  "2026-01-22":"Isra' Mi'raj Tahun 2026",
-  "2026-01-28":"Expo Campus SPARK",
-  "2026-02-16":"Cuti Bersama Tahun Baru Imlek",
-  "2026-02-17":"Tahun Baru Imlek",
-  "2026-02-20":"Ramadhan",
-  "2026-03-18":"Cuti Bersama Hari Suci Nyepi",
-  "2026-03-19":"Hari Suci Nyepi",
-  "2026-03-20":"Cuti bersama Hari Raya Idul Fitri",
-  "2026-03-21":"Hari Raya Idul Fitri",
-  "2026-03-22":"Hari Raya Idul Fitri",
-  "2026-03-23":"Hari Raya Idul Fitri",
-  "2026-03-24":"Hari Raya Idul Fitri",
-  "2026-04-03":"Wafat Isa Al-masih",
-  "2026-04-05":"Hari Paskah",
-  "2026-04-21":"Hari Kartini",
-  "2026-05-01":"Hari Buruh Internasional",
-  "2026-05-02":"Hari Pendidikan Nasional",
-  "2026-05-14":"Hari Kenaikan Isa Al-masih",
-  "2026-05-20":"Hari Kebangkitan Nasional",
-  "2026-05-27":"Hari Raya Idhul Adha",
-  "2026-05-28":"Hari Raya Idhul Adha",
-  "2026-05-31":"Hari Raya Waisak",
-  "2026-06-01":"Hari Lahir Pancasila",
-  "2026-06-16":"1 Muharram",
-  "2026-07-23":"Hari Anak Nasional",
-  "2026-08-17":"Hari Kemerdekaan RI",
-  "2026-08-25":"Maulid Nabi Muhammad",
-  "2026-10-05":"Hari Guru Sedunia",
-  "2026-10-12":"Hari Jadi Jawa Timur",
-  "2026-10-22":"Hari Santri Nasional",
-  "2026-11-09":"Hari Jadi Tuban",
-  "2026-11-12":"Hari Ayah Nasional",
-  "2026-11-25":"Hari Guru Nasional",
-  "2026-12-22":"Hari Ibu Nasional",
-  "2026-12-24":"Cuti Hari Raya Natal",
-  "2026-12-25":"Hari Raya Natal"
-};
-
-/* 🟠 INTERNASIONAL */
-const internationalDays={
-  "2026-03-20":"Hari Kebahagiaan Internasional",
-  "2026-03-27":"Hari Teater Sedunia",
-  "2026-07-05":"Hari Lingkungan Hidup",
-  "2026-12-01":"Hari AIDS Sedunia",
-  "2026-12-10":"Hari Hak Asasi Manusia"
-};
-
-/* 🔵 EVENT POSMAR */
-const posmarEvents={
-  "2026-01-16":"Isra' Mi'raj Nabi Muhammad",
-  "2026-01-28":"Expo Campus SPARK"
-};
-
+/* ===== KALENDER ===== */
+const holidays={"2026-01-01":"Tahun Baru","2026-08-17":"Kemerdekaan RI","2026-12-25":"Natal"};
 const months=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
 const days=["Min","Sen","Sel","Rab","Kam","Jum","Sab"];
 const container=document.getElementById("calendarContainer");
 
 months.forEach((month,m)=>{
-  const monthDiv=document.createElement("div");
-  monthDiv.className="month";
-  monthDiv.innerHTML=`<h3>${month} 2026</h3>`;
-
+  const div=document.createElement("div");
+  div.className="month";
+  div.innerHTML=`<h3>${month} 2026</h3>`;
   const grid=document.createElement("div");
   grid.className="calendar-grid";
   days.forEach(d=>grid.innerHTML+=`<div class="day header">${d}</div>`);
-
-  const firstDay=new Date(2026,m,1).getDay();
-  const totalDays=new Date(2026,m+1,0).getDate();
-  for(let i=0;i<firstDay;i++) grid.innerHTML+=`<div class="day"></div>`;
-
-  let h=[],iD=[],p=[];
-  for(let d=1;d<=totalDays;d++){
-    const dateStr=`2026-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+  const first=new Date(2026,m,1).getDay();
+  const total=new Date(2026,m+1,0).getDate();
+  for(let i=0;i<first;i++)grid.innerHTML+=`<div class="day"></div>`;
+  for(let d=1;d<=total;d++){
+    let date=`2026-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
     let cls="day";
-    if(new Date(2026,m,d).getDay()===0) cls+=" sunday";
-    if(holidays[dateStr]){cls+=" holiday"; h.push(`🔴 ${d} ${month} – ${holidays[dateStr]}`);}
-    if(internationalDays[dateStr]){cls+=" international"; iD.push(`🟠 ${d} ${month} – ${internationalDays[dateStr]}`);}
-    if(posmarEvents[dateStr]){cls+=" posmar"; p.push(`🔵 ${d} ${month} – ${posmarEvents[dateStr]}`);}
+    if(new Date(2026,m,d).getDay()==0)cls+=" sunday";
+    if(holidays[date])cls+=" holiday";
     grid.innerHTML+=`<div class="${cls}">${d}</div>`;
   }
-
-  monthDiv.appendChild(grid);
-  if(h.length||iD.length||p.length){
-    const note=document.createElement("div");
-    note.style.marginTop="10px";
-    note.innerHTML=`
-      <b style="color:red;">🔴 Hari Libur Nasional</b><br>${h.join("<br>")||"-"}
-      <br><br><b style="color:orange;">🟠 Hari Internasional</b><br>${iD.join("<br>")||"-"}
-      <br><br><b style="color:#1976d2;">🔵 Event POSMAR</b><br>${p.join("<br>")||"-"}
-    `;
-    monthDiv.appendChild(note);
-  }
-  container.appendChild(monthDiv);
+  div.appendChild(grid);
+  container.appendChild(div);
 });
-</script>
 
-<script>
 /* ===== CHAT + ADMIN ===== */
-const chatBox = document.getElementById("chatBox");
-const chatInput = document.getElementById("chatInput");
-
-let isAdmin = false;
-const ADMIN_PASSWORD = "admin123"; // ganti sesukamu
+const chatBox=document.getElementById("chatBox");
+const chatInput=document.getElementById("chatInput");
+let isAdmin=false;
+const ADMIN_PASSWORD="admin123";
 
 function toggleAdmin(){
-  if(isAdmin){
-    isAdmin = false;
-    alert("Mode admin dimatikan");
-    loadChat();
-    return;
-  }
-  const pass = prompt("Masukkan password admin:");
-  if(pass === ADMIN_PASSWORD){
-    isAdmin = true;
-    alert("Mode admin aktif");
-    loadChat();
-  }else{
-    alert("Password salah");
-  }
+  const p=prompt("Password admin:");
+  if(p===ADMIN_PASSWORD){isAdmin=!isAdmin;loadChat();}
 }
 
 function loadChat(){
-  const chats = JSON.parse(localStorage.getItem("aspirasiChats")) || [];
-  chatBox.innerHTML = "";
-
-  chats.forEach((c, index)=>{
-    const div = document.createElement("div");
-    div.className = "chat-item";
-
-    div.innerHTML = `
-      💬 <b>Pengguna_${String(index+1).padStart(3,"0")}</b>: ${c}
-      ${isAdmin ? `<button onclick="deleteChat(${index})" style="float:right;background:red;border:none;color:white;border-radius:5px;">❌</button>` : ""}
-    `;
-
-    chatBox.appendChild(div);
+  const chats=JSON.parse(localStorage.getItem("aspirasiChats"))||[];
+  chatBox.innerHTML="";
+  chats.forEach((c,i)=>{
+    chatBox.innerHTML+=`
+      <div class="chat-item">
+        💬 <b>Anonim</b>: ${c}
+        ${isAdmin?`<button onclick="del(${i})" style="background:red;color:white;border:none;">❌</button>`:""}
+      </div>`;
   });
-
-  chatBox.scrollTop = chatBox.scrollHeight;
+  chatBox.scrollTop=chatBox.scrollHeight;
 }
 
 function sendChat(){
-  const text = chatInput.value.trim();
-  if(!text) return;
-
-  const chats = JSON.parse(localStorage.getItem("aspirasiChats")) || [];
-  chats.push(text);
-  localStorage.setItem("aspirasiChats", JSON.stringify(chats));
-
-  chatInput.value = "";
+  if(!chatInput.value.trim())return;
+  const chats=JSON.parse(localStorage.getItem("aspirasiChats"))||[];
+  chats.push(chatInput.value);
+  localStorage.setItem("aspirasiChats",JSON.stringify(chats));
+  chatInput.value="";
   loadChat();
 }
-
-function deleteChat(index){
-  if(!isAdmin) return;
-  const chats = JSON.parse(localStorage.getItem("aspirasiChats")) || [];
-  chats.splice(index,1);
-  localStorage.setItem("aspirasiChats", JSON.stringify(chats));
+function del(i){
+  const chats=JSON.parse(localStorage.getItem("aspirasiChats"));
+  chats.splice(i,1);
+  localStorage.setItem("aspirasiChats",JSON.stringify(chats));
   loadChat();
 }
-
 loadChat();
+</script>
 
-  
+</body>
+</html>
