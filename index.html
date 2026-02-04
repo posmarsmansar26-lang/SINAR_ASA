@@ -179,12 +179,17 @@ Kalender Tahun 2026
   <span onclick="showPage('home')">🏠</span>
   <span onclick="showPage('calendar')">📅</span>
   <span onclick="showPage('chat')">💬</span>
+  <span onclick="openDrive()">☁️</span>
+  <span onclick="showPage('docs')">📸</span>
 </footer>
 
 <script>
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+function openDrive(){
+  // 🔴 GANTI LINK INI JIKA SUDAH PUNYA FOLDER DRIVE KHUSUS
+  window.open("https://drive.google.com", "_blank");
 }
 
 /* 🔴 LIBUR NASIONAL */
