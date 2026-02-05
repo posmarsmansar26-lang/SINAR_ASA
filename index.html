@@ -166,29 +166,6 @@ button{
   border-radius:10px;
   margin-top:8px;
 }
-  <script>
-/* ===== PLAYLIST MINGGUAN ===== */
-const weeklyPlaylist = {
-  week: "Minggu ke-1 (1–7 Januari 2026)",
-  songs: [
-    "Laskar Pelangi – Nidji",
-    "Rayuan Pulau Kelapa – Ismail Marzuki",
-    "Zona Nyaman – Fourtwnty",
-    "Manusia Kuat – Tulus",
-    "Sampai Jadi Debu – Banda Neira"
-  ]
-};
-
-document.getElementById("playlistWeek").innerText = weeklyPlaylist.week;
-
-const list = document.getElementById("playlistSongs");
-list.innerHTML = "";
-weeklyPlaylist.songs.forEach(song=>{
-  const li = document.createElement("li");
-  li.innerHTML = "▶ " + song;
-  list.appendChild(li);
-});
-</script>
 
 /* FOOTER */
 footer{
