@@ -179,6 +179,7 @@ Kalender Tahun 2026
   <span onclick="showPage('home')">🏠</span>
   <span onclick="showPage('calendar')">📅</span>
   <span onclick="showPage('chat')">💬</span>
+  <span onclick="openDrive()">☁️</span>
 </footer>
 
 <script>
@@ -370,3 +371,13 @@ function deleteChat(index){
 }
 
 loadChat();
+
+  <script>
+function openDrive(){
+  window.open(
+    "https://drive.google.com/drive/folders/1oNJfsM6q71EyBhA3YoUglF9_flXwupmY",
+    "_blank"
+  );
+}
+</script>
+
