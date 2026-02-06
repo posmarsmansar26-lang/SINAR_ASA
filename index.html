@@ -393,7 +393,9 @@ function loadChat(){
 
     div.innerHTML = `
       💬 <b>Pengguna_${String(index+1).padStart(3,"0")}</b>: ${c}
-      ${isAdmin ? `<button onclick="deleteChat(${index})" style="float:right;background:red;border:none;color:white;border-radius:5px;">❌</button>` : ""}
+      ${isAdmin ? `<button onclick="deleteChat(${index})"
+        style="float:right;background:red;border:none;color:white;
+        border-radius:5px;padding:2px 6px;">❌</button>` : ""}
     `;
 
     chatBox.appendChild(div);
@@ -404,7 +406,10 @@ function loadChat(){
 
 function sendChat(){
   const text = chatInput.value.trim();
-  if(!text) return;
+  if(!text){
+    alert("Pesan tidak boleh kosong");
+    return;
+  }
 
   const chats = JSON.parse(localStorage.getItem("aspirasiChats")) || [];
   chats.push(text);
@@ -423,14 +428,6 @@ function deleteChat(index){
 }
 
 loadChat();
-
-  <script>
-function openDrive(){
-  window.open(
-    "https://drive.google.com/drive/folders/1oNJfsM6q71EyBhA3YoUglF9_flXwupmY",
-    "_blank"
-  );
-}
 </script>
 
   <script>
