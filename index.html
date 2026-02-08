@@ -114,6 +114,15 @@ header{
 .playlist-box li:last-child{
   border-bottom:none;
 }
+  .playlist-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.spotify-code{
+  width:80px;
+}
 
 /* KALENDER */
 .month{
@@ -431,15 +440,31 @@ loadChat();
 </script>
 
   <script>
-/* ===== PLAYLIST MINGGUAN ===== */
+<script>
+/* ===== PLAYLIST MINGGUAN + SPOTIFY CODE ===== */
 const weeklyPlaylist = {
-  week: "Minggu ke-2 (9-13 Februari 2026)",
+  week: "Minggu ke-2 (9–13 Februari 2026)",
   songs: [
-    "Laskar Pelangi – Nidji",
-    "Kisah Kasih Di Sekolah – Chrisye",
-    "Ingatlah Hari Ini – Project Pop",
-    "Manusia Kuat – Tulus",
-    "Tujuh Belas – Tulus"
+    {
+      title: "Laskar Pelangi – Nidji",
+      spotify: "spotify:track:2q9M5T8bC0iY1k2Pz4x9xA"
+    },
+    {
+      title: "Kisah Kasih Di Sekolah – Chrisye",
+      spotify: "spotify:track:4pZy0M5Bv6wT2x8kY9a1ZB"
+    },
+    {
+      title: "Ingatlah Hari Ini – Project Pop",
+      spotify: "spotify:track:1XyQw2E9M8vP5Lk0zA7HhF"
+    },
+    {
+      title: "Manusia Kuat – Tulus",
+      spotify: "spotify:track:0f3D7n5Y9MZ2K8QwXh4A1F"
+    },
+    {
+      title: "Tujuh Belas – Tulus",
+      spotify: "spotify:track:3p4hRhMcbk0Lk5Wg9w0x9H"
+    }
   ]
 };
 
@@ -447,10 +472,20 @@ document.getElementById("playlistWeek").innerText = weeklyPlaylist.week;
 
 const list = document.getElementById("playlistSongs");
 list.innerHTML = "";
+
 weeklyPlaylist.songs.forEach(song=>{
   const li = document.createElement("li");
-  li.innerHTML = "▶ " + song;
+  li.className = "playlist-item";
+
+  li.innerHTML = `
+    <img
+      src="https://scannables.scdn.co/uri/plain/png/000000/white/640/${song.spotify}"
+      class="spotify-code"
+      alt="Spotify Code"
+    >
+    ▶ ${song.title}
+  `;
+
   list.appendChild(li);
 });
 </script>
-
