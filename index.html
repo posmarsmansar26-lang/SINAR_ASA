@@ -197,13 +197,15 @@ footer span{cursor:pointer;}
     Sarana Informasi dan Aspirasi Anak SMANSAR
   </div>
 
-  <!-- 🎵 PLAYLIST MINGGUAN -->
+   <!-- 🎵 PLAYLIST MINGGUAN -->
   <div class="playlist-box">
-    <h3 id="playlistTitle">🎵 Playlist Mingguan</h3>
+    <h3>🎵 Playlist Mingguan</h3>
     <p id="playlistWeek"></p>
     <ul id="playlistSongs"></ul>
+
   </div>
 </div>
+
 
 <div id="calendar" class="page">
 <h2 style="text-align:center;color:#1976d2;margin-bottom:20px;">
@@ -433,25 +435,28 @@ loadChat();
 <script>
 /* ===== PLAYLIST MINGGUAN ===== */
 const weeklyPlaylist = {
-  week: "Minggu ke-1 (1–7 Januari 2026)",
+  week: "Minggu ke-2 (9–13 Februari 2026)",
   songs: [
- "Laskar Pelangi – Nidji", 
- "Kisah Kasih Di Sekolah – Chrisye",
- "Ingatlah Hari Ini – Project Pop",
- "Manusia Kuat – Tulus",
- "Tujuh Belas – Tulus"
+    "Laskar Pelangi – Nidji",
+    "Kisah Kasih Di Sekolah – Chrisye",
+    "Ingatlah Hari Ini – Project Pop",
+    "Manusia Kuat – Tulus",
+    "Tujuh Belas – Tulus"
+  ]
 };
 
 document.getElementById("playlistWeek").innerText = weeklyPlaylist.week;
 
 const list = document.getElementById("playlistSongs");
 list.innerHTML = "";
-weeklyPlaylist.songs.forEach(song=>{
+
+weeklyPlaylist.songs.forEach(song => {
   const li = document.createElement("li");
   li.innerHTML = "▶ " + song;
   list.appendChild(li);
 });
 </script>
+
 
   </body>
 </html>
