@@ -467,26 +467,28 @@ const weeklyPlaylist = {
   ]
 };
 
+/* ===== PLAYLIST MINGGUAN ===== */ 
+const weeklyPlaylist = { 
+    week: "Minggu ke-2 (9-13 Februari 2026)",  
+    songs: [  
+         "Laskar Pelangi – Nidji", 
+         "Kisah Kasih Di Sekolah – Chrisye", 
+         "Ingatlah Hari Ini – Project Pop", 
+         "Manusia Kuat – Tulus", 
+         "Tujuh Belas – Tulus"  
+     ] 
+ }; 
+
 document.getElementById("playlistWeek").innerText = weeklyPlaylist.week;
 
 const list = document.getElementById("playlistSongs");
-list.innerHTML = "";
+list.innerHTML = ""; 
 
-weeklyPlaylist.songs.forEach(song=>{
-  const li = document.createElement("li");
-  li.className = "playlist-item";
-
-  li.innerHTML = `
-    <img
-      src="https://scannables.scdn.co/uri/plain/png/000000/white/640/${song.spotify}"
-      class="spotify-code"
-      alt="Spotify Code"
-    >
-    ▶ ${song.title}
-  `;
-
-  list.appendChild(li);
-});
+weeklyPlaylist.songs.forEach(song=>{ 
+    const li = document.createElement("li"); 
+    li.innerHTML = "▶ " + song; 
+list.appendChild(li); 
+}); 
 </script>
 
 </body>
