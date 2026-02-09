@@ -441,33 +441,7 @@ loadChat();
 
   <script>
 
-      /* ===== PLAYLIST MINGGUAN ===== */
-const weeklyPlaylist = {
-  week: "Minggu ke-1 (1–7 Januari 2026)",
-  songs: [
-    "Laskar Pelangi – Nidji",
-    "Rayuan Pulau Kelapa – Ismail Marzuki",
-    "Zona Nyaman – Fourtwnty",
-    "Manusia Kuat – Tulus",
-    "Sampai Jadi Debu – Banda Neira"
-  ]
-};
-
-document.getElementById("playlistWeek").innerText = weeklyPlaylist.week;
-
-const list = document.getElementById("playlistSongs");
-list.innerHTML = "";
-weeklyPlaylist.songs.forEach(song=>{
-  const li = document.createElement("li");
-  li.innerHTML = "▶ " + song;
-  list.appendChild(li);
-});
-</script>
-
-</body>
-</html>
-
-    <script>
+<script>
 /* ===== PLAYLIST MINGGUAN + SPOTIFY CODE ===== */
 const weeklyPlaylist = {
   week: "Minggu ke-2 (9–13 Februari 2026)",
@@ -516,3 +490,6 @@ weeklyPlaylist.songs.forEach(song=>{
   list.appendChild(li);
 });
 </script>
+
+</body>
+</html>
