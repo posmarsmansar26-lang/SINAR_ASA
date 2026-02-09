@@ -187,9 +187,56 @@ footer span{cursor:pointer;}
 </style>
 </head>
 
+  <script>
+function registerUser(){
+  const email = document.getElementById("regEmail").value.trim();
+  const username = document.getElementById("regUsername").value.trim();
+
+  if(!email || !username){
+    alert("Email dan Username wajib diisi");
+    return;
+  }
+
+  const userData = {
+    email: email,
+    username: username
+  };
+
+  localStorage.setItem("userAccount", JSON.stringify(userData));
+
+  // masuk ke HOME
+  document.getElementById("register").classList.remove("active");
+  showPage("home");
+}
+
+/* 🔁 CEK SAAT WEB DIBUKA */
+window.addEventListener("load", ()=>{
+  const user = localStorage.getItem("userAccount");
+  if(user){
+    showPage("home");
+  }
+});
+</script>
+ 
 <body>
 
 <header><h1>Sinar Asa</h1></header>
+
+  <div id="register" class="page active">
+  <h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
+    📝 Registrasi Pengguna
+  </h2>
+
+  <div style="background:white;padding:20px;border-radius:12px;">
+    <input id="regEmail" type="email" placeholder="Email"
+      style="width:100%;padding:10px;border-radius:8px;margin-bottom:10px;">
+
+    <input id="regUsername" type="text" placeholder="Username"
+      style="width:100%;padding:10px;border-radius:8px;margin-bottom:10px;">
+
+    <button onclick="registerUser()">Masuk</button>
+  </div>
+</div>
 
 <div id="home" class="page active">
   <div class="home-box">
@@ -223,7 +270,7 @@ Kalender Tahun 2026
 <button onclick="sendChat()">Kirim</button>
 </div>
 
-  <footer>
+  <footer id="footerNav">
   <span onclick="showPage('home')">🏠</span>
   <span onclick="showPage('calendar')">📅</span>
   <span onclick="showPage('chat')">💬</span>
@@ -457,6 +504,19 @@ weeklyPlaylist.songs.forEach(song => {
 });
 </script>
 
+  <script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p =>
+    p.classList.remove('active')
+  );
 
-  </body>
+  document.getElementById(id).classList.add('active');
+
+  document.getElementById("footerNav").style.display =
+    (id === "register") ? "none" : "flex";
+}
+</script>
+  
+</body>
 </html>
+
