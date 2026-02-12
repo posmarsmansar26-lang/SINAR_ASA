@@ -220,6 +220,24 @@ window.addEventListener("load", ()=>{
  
 <body>
 
+  <header><h1>Sinar Asa</h1></header>
+<div id="register" class="page active">
+  <div class="home-box">
+    <h2>Registrasi</h2>
+    <p>Masukkan data untuk melanjutkan</p>
+
+    <input id="regEmail" type="email" placeholder="Email"
+      style="width:100%;padding:10px;margin:8px 0;border-radius:8px;">
+
+    <input id="regUsername" type="text" placeholder="Username"
+      style="width:100%;padding:10px;margin:8px 0;border-radius:8px;">
+
+    <button onclick="registerUser()">Daftar</button>
+  </div>
+</div>
+
+  
+
 <header><h1>Sinar Asa</h1></header>
 
   <div id="register" class="page active">
@@ -274,6 +292,7 @@ Kalender Tahun 2026
   <span onclick="showPage('home')">🏠</span>
   <span onclick="showPage('calendar')">📅</span>
   <span onclick="showPage('chat')">💬</span>
+  <span onclick="showPage('profile')">👤</span>
 
   <!-- 🔗 GOOGLE DRIVE (AMAN DI HP) -->
   <a href="https://drive.google.com/drive/folders/1oNJfsM6q71EyBhA3YoUglF9_flXwupmY"
@@ -285,8 +304,13 @@ Kalender Tahun 2026
 
 <script>
 function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.page')
+    .forEach(p=>p.classList.remove('active'));
+
   document.getElementById(id).classList.add('active');
+
+  document.getElementById("footerNav").style.display =
+    (id === "register") ? "none" : "flex";
 }
 
 /* 🔴 LIBUR NASIONAL */
@@ -479,6 +503,28 @@ function deleteChat(index){
 loadChat();
 </script>
 
+<div id="profile" class="page">
+  <h2 style="text-align:center;color:#1976d2;">👤 Profil</h2>
+
+  <div class="home-box">
+
+    <img id="profileAvatar"
+      src="https://i.imgur.com/6VBx3io.png"
+      style="width:100px;border-radius:50%;margin-bottom:10px;">
+
+    <h3 id="profileUsername">Username</h3>
+
+    <input type="file" accept="image/*" onchange="changeAvatar(event)">
+
+    <hr style="margin:15px 0">
+
+    <h4>🕘 Riwayat Chat</h4>
+    <div id="chatHistory"
+      style="max-height:200px;overflow:auto;text-align:left;"></div>
+
+  </div>
+</div>
+
 <script>
 /* ===== PLAYLIST MINGGUAN ===== */
 const weeklyPlaylist = {
@@ -516,6 +562,57 @@ function showPage(id){
     (id === "register") ? "none" : "flex";
 }
 </script>
+
+  <script>
+function registerUser(){
+  const email = regEmail.value.trim();
+  const username = regUsername.value.trim();
+
+  if(!email || !username){
+    alert("Lengkapi semua data");
+    return;
+  }
+
+  localStorage.setItem("userEmail", email);
+  localStorage.setItem("username", username);
+
+  showPage("home");
+}
+
+// CEK PERTAMA KALI
+if(!localStorage.getItem("username")){
+  showPage("register");
+}else{
+  showPage("home");
+}
+
+// ===== PROFIL =====
+function loadProfile(){
+  profileUsername.innerText =
+    localStorage.getItem("username") || "Pengguna";
+
+  const avatar = localStorage.getItem("avatar");
+  if(avatar) profileAvatar.src = avatar;
+
+  const chats =
+    JSON.parse(localStorage.getItem("aspirasiChats")) || [];
+
+  chatHistory.innerHTML = chats.map(c=>"• "+c).join("<br>");
+}
+
+function changeAvatar(e){
+  const file = e.target.files[0];
+  if(!file) return;
+
+  const reader = new FileReader();
+  reader.onload = ()=>{
+    localStorage.setItem("avatar", reader.result);
+    profileAvatar.src = reader.result;
+  };
+  reader.readAsDataURL(file);
+}
+</script>
+
   
 </body>
 </html>
