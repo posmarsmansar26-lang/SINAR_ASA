@@ -183,6 +183,11 @@ footer{
   font-size:22px;
   color:white;
 }
+
+  body{
+  padding-bottom:120px;
+}
+
 footer span{cursor:pointer;}
 </style>
 </head>
@@ -219,7 +224,7 @@ window.addEventListener("load", ()=>{
 </script>
 
 <body>
-<div id="register" class="page">
+<div id="register" class="page active">
   <h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
     📝 Registrasi Pengguna
   </h2>
@@ -239,20 +244,16 @@ window.addEventListener("load", ()=>{
 
   
   <script>
-function registerUser(){
-  const email = document.getElementById("regEmail").value.trim();
-  const username = document.getElementById("regUsername").value.trim();
+document.addEventListener("DOMContentLoaded", ()=>{
+  const email = localStorage.getItem("userEmail");
+  const username = localStorage.getItem("username");
 
-  if(email === "" || username === ""){
-    alert("Email dan Username wajib diisi");
-    return;
+  if(email && username){
+    showPage("home");
+  }else{
+    showPage("register");
   }
-
-  localStorage.setItem("userEmail", email);
-  localStorage.setItem("username", username);
-
-  showPage("home");
-}
+});
 </script>
 
 
