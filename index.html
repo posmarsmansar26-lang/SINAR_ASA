@@ -413,7 +413,7 @@ months.forEach((month,m)=>{
     const dateStr=`2026-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
     let cls="day";
     if(new Date(2026,m,d).getDay()===0) cls+=" sunday";
-    if(holidays[dateStr]){cls+=" holiday"; h.push(`- ${d} ${month} – ${holidays[dateStr]}`);}
+    if(holidays[dateStr]){cls+=" holiday"; h.push(`🔴 ${d} ${month} – ${holidays[dateStr]}`);}
     if(internationalDays[dateStr]){cls+=" international"; iD.push(`🟠 ${d} ${month} – ${internationalDays[dateStr]}`);}
     if(posmarEvents[dateStr]){cls+=" posmar"; p.push(`🔵 ${d} ${month} – ${posmarEvents[dateStr]}`);}
     grid.innerHTML+=`<div class="${cls}">${d}</div>`;
