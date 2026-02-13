@@ -217,40 +217,44 @@ window.addEventListener("load", ()=>{
   }
 });
 </script>
- 
+
 <body>
-
-<div id="register" class="page active">
-  <div class="home-box">
-    <h2>Registrasi</h2>
-    <p>Masukkan data untuk melanjutkan</p>
-
-    <input id="regEmail" type="email" placeholder="Email"
-      style="width:100%;padding:10px;margin:8px 0;border-radius:8px;">
-
-    <input id="regUsername" type="text" placeholder="Username"
-      style="width:100%;padding:10px;margin:8px 0;border-radius:8px;">
-
-    <button onclick="registerUser()">Daftar</button>
-  </div>
-</div>
-
-  
-  <div id="register" class="page active">
+<div id="register" class="page">
   <h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
     📝 Registrasi Pengguna
   </h2>
 
-  <div style="background:white;padding:20px;border-radius:12px;">
+  <div style="background:white;padding:20px;border-radius:12px;max-width:400px;margin:auto;">
+    
     <input id="regEmail" type="email" placeholder="Email"
       style="width:100%;padding:10px;border-radius:8px;margin-bottom:10px;">
 
     <input id="regUsername" type="text" placeholder="Username"
       style="width:100%;padding:10px;border-radius:8px;margin-bottom:10px;">
 
-    <button onclick="registerUser()">Masuk</button>
+    <button onclick="registerUser()">Daftar</button>
+
   </div>
 </div>
+
+  
+  <script>
+function registerUser(){
+  const email = document.getElementById("regEmail").value.trim();
+  const username = document.getElementById("regUsername").value.trim();
+
+  if(email === "" || username === ""){
+    alert("Email dan Username wajib diisi");
+    return;
+  }
+
+  localStorage.setItem("userEmail", email);
+  localStorage.setItem("username", username);
+
+  showPage("home");
+}
+</script>
+
 
 <header><h1>Sinar Asa</h1></header>
 <div id="home" class="page active">
