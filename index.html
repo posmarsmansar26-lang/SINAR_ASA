@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinar Asa</title> 
 
 <!-- 🔥 INI YANG PALING PENTING UNTUK HP -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -192,36 +194,10 @@ footer span{cursor:pointer;}
 </style>
 </head>
 
-  <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sinar Asa</title>
-
 <style>
   /* CSS kamu yang sudah ada */
 </style>
 </head>
-
- <script>
-function loginUser(){
-  const email = loginEmail.value.trim();
-  const username = loginUsername.value.trim();
-  const password = loginPassword.value.trim();
-
-  if(!email || !username || !password){
-    alert("Semua field wajib diisi");
-    return;
-  }
-
-  localStorage.setItem("userEmail", email);
-  localStorage.setItem("username", username);
-
-  document.getElementById("mainHeader").style.display = "block";
-  document.getElementById("footerNav").style.display = "flex";
-
-  showPage("home");
-}
-</script>
 
 <body>
 <div id="login" class="page active">
@@ -241,101 +217,61 @@ function loginUser(){
 <div id="profile" class="page">
   <div style="position:relative;">
 
-    <!-- TITIK TIGA -->
-    <span onclick="showSettings()"
-      style="position:absolute;top:0;right:0;font-size:24px;cursor:pointer;">
-      ⋮
-    </span>
 
-    <div style="text-align:center;margin-top:20px;">
-      <img id="avatar"
-        src="https://i.imgur.com/6VBx3io.png"
-        style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
-      
-      <br><br>
-      <input type="file" accept="image/*" onchange="changeAvatar(event)">
-      
-      <h3 id="profileUsername"></h3>
+      <script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p =>
+    p.classList.remove('active')
+  );
 
-      <textarea id="story"
-        placeholder="Tulis story kamu..."
-        style="width:100%;margin-top:10px;border-radius:10px;padding:10px;">
-      </textarea>
-      <button onclick="saveStory()">Simpan Story</button>
+  document.getElementById(id).classList.add('active');
 
-      <div id="settings" class="page">
-  <h2>Pengaturan</h2>
+  document.getElementById("footerNav").style.display =
+    (id === "register") ? "none" : "flex";
+}
+</script>
 
-  <button onclick="setTheme('light')">🌞 Tema Terang</button>
-  <button onclick="setTheme('dark')">🌙 Tema Gelap</button>
-  <button onclick="setTheme('default')">🎨 Default</button>
-        
-  <hr><br>
+  <script>
+function registerUser(){
+  const email = regEmail.value.trim();
+  const username = regUsername.value.trim();
 
-  <button style="background:red" onclick="logout()">🚪 Logout</button>
-  </div>
-  </div>
+  if(!email || !username){
+    alert("Lengkapi semua data");
+    return;
+  }
 
+  localStorage.setItem("userEmail", email);
+  localStorage.setItem("username", username);
+
+  showPage("home");
+}
+
+// CEK PERTAMA KALI
+if(!localStorage.getItem("username")){
+  showPage("register");
+}else{
+  showPage("home");
+}
   
-  <script>
-document.addEventListener("DOMContentLoaded", ()=>{
-  const email = localStorage.getItem("userEmail");
-  const username = localStorage.getItem("username");
+ <script>
+function loginUser(){
+  const email = loginEmail.value.trim();
+  const username = loginUsername.value.trim();
+  const password = loginPassword.value.trim();
 
-  if(email && username){
-    showPage("home");
-  }else{
-    showPage("register");
+  if(!email || !username || !password){
+    alert("Semua field wajib diisi");
+    return;
   }
-});
-</script>
 
-  <script>
-function loadProfile(){
-  profileUsername.innerText = localStorage.getItem("username") || "Pengguna";
+  localStorage.setItem("userEmail", email);
+  localStorage.setItem("username", username);
 
-  const avatar = localStorage.getItem("avatar");
-  if(avatar) document.getElementById("avatar").src = avatar;
+  document.getElementById("mainHeader").style.display = "block";
+  document.getElementById("footerNav").style.display = "flex";
 
-  story.value = localStorage.getItem("story") || "";
-}
-
-function changeAvatar(e){
-  const reader = new FileReader();
-  reader.onload = ()=>{
-    avatar.src = reader.result;
-    localStorage.setItem("avatar", reader.result);
-  };
-  reader.readAsDataURL(e.target.files[0]);
-}
-
-function saveStory(){
-  localStorage.setItem("story", story.value);
-  alert("Story disimpan");
-}
-</script>
-
-    <script>
-function showSettings(){
-  showPage("settings");
-}
-
-function logout(){
-  localStorage.clear();
-  location.reload();
-}
-
-function setTheme(mode){
-  if(mode === "dark"){
-    document.body.style.background = "#121212";
-    document.body.style.color = "white";
-  }else if(mode === "light"){
-    document.body.style.background = "#ffffff";
-    document.body.style.color = "#000";
-  }else{
-    document.body.style.background = "#f4f8ff";
-    document.body.style.color = "#000";
-  }
+  showPage("home");
 }
 </script>
 
@@ -637,42 +573,7 @@ weeklyPlaylist.songs.forEach(song => {
 });
 </script>
 
-  <script>
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p =>
-    p.classList.remove('active')
-  );
-
-  document.getElementById(id).classList.add('active');
-
-  document.getElementById("footerNav").style.display =
-    (id === "register") ? "none" : "flex";
-}
-</script>
-
-  <script>
-function registerUser(){
-  const email = regEmail.value.trim();
-  const username = regUsername.value.trim();
-
-  if(!email || !username){
-    alert("Lengkapi semua data");
-    return;
-  }
-
-  localStorage.setItem("userEmail", email);
-  localStorage.setItem("username", username);
-
-  showPage("home");
-}
-
-// CEK PERTAMA KALI
-if(!localStorage.getItem("username")){
-  showPage("register");
-}else{
-  showPage("home");
-}
-
+  <script> 
 // ===== PROFIL =====
 function loadProfile(){
   profileUsername.innerText =
@@ -700,6 +601,102 @@ function changeAvatar(e){
 }
 </script>
 
+ <!-- TITIK TIGA -->
+    <span onclick="showSettings()"
+      style="position:absolute;top:0;right:0;font-size:24px;cursor:pointer;">
+      ⋮
+    </span>
+
+    <div style="text-align:center;margin-top:20px;">
+      <img id="avatar"
+        src="https://i.imgur.com/6VBx3io.png"
+        style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
+      
+      <br><br>
+      <input type="file" accept="image/*" onchange="changeAvatar(event)">
+      
+      <h3 id="profileUsername"></h3>
+
+      <textarea id="story"
+        placeholder="Tulis story kamu..."
+        style="width:100%;margin-top:10px;border-radius:10px;padding:10px;">
+      </textarea>
+      <button onclick="saveStory()">Simpan Story</button>
+
+      <div id="settings" class="page">
+  <h2>Pengaturan</h2>
+
+  <button onclick="setTheme('light')">🌞 Tema Terang</button>
+  <button onclick="setTheme('dark')">🌙 Tema Gelap</button>
+  <button onclick="setTheme('default')">🎨 Default</button>
+        
+  <hr><br>
+
+  <button style="background:red" onclick="logout()">🚪 Logout</button>
+  </div>
+  </div>
+
   
-</body>
-</html>
+  <script>
+document.addEventListener("DOMContentLoaded", ()=>{
+  const email = localStorage.getItem("userEmail");
+  const username = localStorage.getItem("username");
+
+  if(email && username){
+    showPage("home");
+  }else{
+    showPage("register");
+  }
+});
+</script>
+
+  <script>
+function loadProfile(){
+  profileUsername.innerText = localStorage.getItem("username") || "Pengguna";
+
+  const avatar = localStorage.getItem("avatar");
+  if(avatar) document.getElementById("avatar").src = avatar;
+
+  story.value = localStorage.getItem("story") || "";
+}
+
+function changeAvatar(e){
+  const reader = new FileReader();
+  reader.onload = ()=>{
+    avatar.src = reader.result;
+    localStorage.setItem("avatar", reader.result);
+  };
+  reader.readAsDataURL(e.target.files[0]);
+}
+
+function saveStory(){
+  localStorage.setItem("story", story.value);
+  alert("Story disimpan");
+}
+</script>
+
+    <script>
+function showSettings(){
+  showPage("settings");
+}
+
+function logout(){
+  localStorage.clear();
+  location.reload();
+}
+
+function setTheme(mode){
+  if(mode === "dark"){
+    document.body.style.background = "#121212";
+    document.body.style.color = "white";
+  }else if(mode === "light"){
+    document.body.style.background = "#ffffff";
+    document.body.style.color = "#000";
+  }else{
+    document.body.style.background = "#f4f8ff";
+    document.body.style.color = "#000";
+  }
+}
+</script>
+
+    
