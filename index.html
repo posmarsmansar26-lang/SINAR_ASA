@@ -5,9 +5,7 @@
 
 <!-- 🔥 INI YANG PALING PENTING UNTUK HP -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Sinar Asa</title>
-
 <style>
 
   /* ===== MODE HP ===== */
@@ -516,10 +514,51 @@ function deleteChat(index){
 loadChat();
 </script>
 
+  <!-- TITIK TIGA (MENU PROFIL) -->
+<span onclick="openSettings()"
+  style="position:absolute;top:15px;right:15px;
+  font-size:26px;cursor:pointer;">
+  ⋮
+</span>
+  
 <div id="profile" class="page">
   <h2 style="text-align:center;color:#1976d2;">👤 Profil</h2>
+  <div class="home-box" style="position:relative;">
 
+  <img id="profileAvatar"
+    src="https://i.imgur.com/6VBx3io.png"
+    style="width:110px;height:110px;border-radius:50%;
+    object-fit:cover;margin-bottom:10px;">
+
+  <input type="file" accept="image/*" onchange="changeAvatar(event)">
+
+  <h3 id="profileUsername" style="margin-top:10px;">Username</h3>
+
+  <textarea id="profileStory"
+    placeholder="Tulis story kamu..."
+    style="width:100%;margin-top:10px;
+    padding:10px;border-radius:10px;">
+  </textarea>
+
+  <button onclick="saveStory()">Simpan Story</button>
+
+  </div>
+  <div id="settings" class="page">
   <div class="home-box">
+    
+    <h2 style="color:#1976d2;text-align:center;">⚙️ Pengaturan</h2>
+    <h4>🎨 Tema Aplikasi</h4>
+    
+    <button onclick="setTheme('light')">🌞 Terang</button>
+    <button onclick="setTheme('dark')">🌙 Gelap</button>
+    <button onclick="setTheme('default')">🎨 Default</button>
+
+    <hr style="margin:15px 0">
+
+    <button style="background:red" onclick="logout()">🚪 Logout</button>
+  </div>
+</div>
+<div class="home-box">
 
     <img id="profileAvatar"
       src="https://i.imgur.com/6VBx3io.png"
@@ -565,6 +604,7 @@ weeklyPlaylist.songs.forEach(song => {
 
   <script>
 function showPage(id){
+  if(id === "profile") loadProfile();
   document.querySelectorAll('.page').forEach(p =>
     p.classList.remove('active')
   );
@@ -623,6 +663,60 @@ function changeAvatar(e){
     profileAvatar.src = reader.result;
   };
   reader.readAsDataURL(file);
+}
+</script>
+
+  <script>
+/* ===== PROFIL ===== */
+function loadProfile(){
+  profileUsername.innerText =
+    localStorage.getItem("username") || "Pengguna";
+
+  const avatar = localStorage.getItem("avatar");
+  if(avatar) profileAvatar.src = avatar;
+
+  profileStory.value =
+    localStorage.getItem("story") || "";
+}
+
+function changeAvatar(e){
+  const file = e.target.files[0];
+  if(!file) return;
+
+  const reader = new FileReader();
+  reader.onload = ()=>{
+    localStorage.setItem("avatar", reader.result);
+    profileAvatar.src = reader.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveStory(){
+  localStorage.setItem("story", profileStory.value);
+  alert("Story disimpan");
+}
+
+/* ===== SETTINGS ===== */
+function openSettings(){
+  showPage("settings");
+}
+
+function logout(){
+  localStorage.clear();
+  location.reload();
+}
+
+function setTheme(mode){
+  if(mode==="dark"){
+    document.body.style.background="#121212";
+    document.body.style.color="white";
+  }else if(mode==="light"){
+    document.body.style.background="#ffffff";
+    document.body.style.color="#000";
+  }else{
+    document.body.style.background="#f4f8ff";
+    document.body.style.color="#000";
+  }
 }
 </script>
 
