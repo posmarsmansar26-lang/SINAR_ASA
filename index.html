@@ -602,48 +602,10 @@ weeklyPlaylist.songs.forEach(song => {
 });
 </script>
 
-  <script>
-function showPage(id){
-  if(id === "profile") loadProfile();
-  document.querySelectorAll('.page').forEach(p =>
-    p.classList.remove('active')
-  );
-
-  document.getElementById(id).classList.add('active');
-
-  document.getElementById("footerNav").style.display =
-    (id === "register") ? "none" : "flex";
-}
-</script>
-
-  <script>
-function registerUser(){
-  const email = regEmail.value.trim();
-  const username = regUsername.value.trim();
-
-  if(!email || !username){
-    alert("Lengkapi semua data");
-    return;
-  }
-
-  localStorage.setItem("userEmail", email);
-  localStorage.setItem("username", username);
-
-  showPage("home");
-}
-
-// CEK PERTAMA KALI
-if(!localStorage.getItem("username")){
-  showPage("register");
-}else{
-  showPage("home");
-}
-
-  <script>
-<div id="profile" class="page">
+  
+  <div id="profile" class="page">
   <div style="position:relative">
 
-    <!-- TITIK TIGA -->
     <span onclick="openSettings()"
       style="position:absolute;top:0;right:0;font-size:24px;cursor:pointer;">
       ⋮
@@ -660,7 +622,7 @@ if(!localStorage.getItem("username")){
       <br><br>
       <input type="file" accept="image/*" onchange="changeAvatar(event)">
 
-      <h3 id="profileUsername" style="margin-top:10px;"></h3>
+      <h3 id="profileUsername"></h3>
 
       <textarea id="profileStory"
         placeholder="Tulis story kamu..."
@@ -673,7 +635,44 @@ if(!localStorage.getItem("username")){
   </div>
 </div>
 
-/* ===== SETTINGS ===== */
+  <script>
+function showPage(id){
+  document.querySelectorAll(".page").forEach(p =>
+    p.classList.remove("active")
+  );
+  document.getElementById(id).classList.add("active");
+
+  if(id === "profile") loadProfile();
+}
+
+function loadProfile(){
+  profileUsername.innerText =
+    localStorage.getItem("username") || "Pengguna";
+
+  profileStory.value =
+    localStorage.getItem("story") || "";
+
+  const avatar = localStorage.getItem("avatar");
+  if(avatar) profileAvatar.src = avatar;
+}
+
+function changeAvatar(e){
+  const file = e.target.files[0];
+  if(!file) return;
+
+  const reader = new FileReader();
+  reader.onload = ()=>{
+    profileAvatar.src = reader.result;
+    localStorage.setItem("avatar", reader.result);
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveStory(){
+  localStorage.setItem("story", profileStory.value);
+  alert("Story disimpan");
+}
+
 function openSettings(){
   showPage("settings");
 }
@@ -696,7 +695,6 @@ function setTheme(mode){
   }
 }
 </script>
-
   
 </body>
 </html>
