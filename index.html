@@ -5,7 +5,9 @@
 
 <!-- 🔥 INI YANG PALING PENTING UNTUK HP -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Sinar Asa</title>
+
 <style>
 
   /* ===== MODE HP ===== */
@@ -514,7 +516,29 @@ function deleteChat(index){
 loadChat();
 </script>
 
-  <script>
+<div id="profile" class="page">
+  <h2 style="text-align:center;color:#1976d2;">👤 Profil</h2>
+
+  <div class="home-box">
+
+    <img id="profileAvatar"
+      src="https://i.imgur.com/6VBx3io.png"
+      style="width:100px;border-radius:50%;margin-bottom:10px;">
+
+    <h3 id="profileUsername">Username</h3>
+
+    <input type="file" accept="image/*" onchange="changeAvatar(event)">
+
+    <hr style="margin:15px 0">
+
+    <h4>🕘 Riwayat Chat</h4>
+    <div id="chatHistory"
+      style="max-height:200px;overflow:auto;text-align:left;"></div>
+
+  </div>
+</div>
+
+<script>
 /* ===== PLAYLIST MINGGUAN ===== */
 const weeklyPlaylist = {
   week: "Minggu ke-2 (9–13 Februari 2026)",
@@ -539,16 +563,43 @@ weeklyPlaylist.songs.forEach(song => {
 });
 </script>
 
-  
   <script>
 function showPage(id){
-  document.querySelectorAll(".page").forEach(p =>
-    p.classList.remove("active")
+  document.querySelectorAll('.page').forEach(p =>
+    p.classList.remove('active')
   );
 
-  if(id === "profile") loadProfile();
+  document.getElementById(id).classList.add('active');
+
+  document.getElementById("footerNav").style.display =
+    (id === "register") ? "none" : "flex";
+}
+</script>
+
+  <script>
+function registerUser(){
+  const email = regEmail.value.trim();
+  const username = regUsername.value.trim();
+
+  if(!email || !username){
+    alert("Lengkapi semua data");
+    return;
+  }
+
+  localStorage.setItem("userEmail", email);
+  localStorage.setItem("username", username);
+
+  showPage("home");
 }
 
+// CEK PERTAMA KALI
+if(!localStorage.getItem("username")){
+  showPage("register");
+}else{
+  showPage("home");
+}
+
+// ===== PROFIL =====
 function loadProfile(){
   profileUsername.innerText =
     localStorage.getItem("username") || "Pengguna";
@@ -556,8 +607,10 @@ function loadProfile(){
   const avatar = localStorage.getItem("avatar");
   if(avatar) profileAvatar.src = avatar;
 
-  profileStory.value =
-    localStorage.getItem("story") || "";
+  const chats =
+    JSON.parse(localStorage.getItem("aspirasiChats")) || [];
+
+  chatHistory.innerHTML = chats.map(c=>"• "+c).join("<br>");
 }
 
 function changeAvatar(e){
@@ -571,97 +624,8 @@ function changeAvatar(e){
   };
   reader.readAsDataURL(file);
 }
-
-function saveStory(){
-  localStorage.setItem("story", profileStory.value);
-  alert("Story disimpan");
-}
-
-function openSettings(){
-  showPage("settings");
-}
-
-function logout(){
-  localStorage.clear();
-  location.reload();
-}
-
-function setTheme(mode){
-  if(mode==="dark"){
-    document.body.style.background="#121212";
-    document.body.style.color="white";
-  }else if(mode==="light"){
-    document.body.style.background="#ffffff";
-    document.body.style.color="#000";
-  }else{
-    document.body.style.background="#f4f8ff";
-    document.body.style.color="#000";
-  }
-}
 </script>
-  
-    <!-- TITIK TIGA -->
-    <span onclick="openSettings()"
-      style="position:absolute;top:0;right:0;font-size:24px;cursor:pointer;">
-      ⋮
-    </span>
 
-    <h2 style="text-align:center;color:#1976d2;">👤 Profil</h2>
-
-    <div class="home-box">
-
-      <!-- SATU-SATUNYA FOTO PROFIL -->
-      <img id="profileAvatar"
-        src="https://i.imgur.com/6VBx3io.png"
-        style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
-
-      <br><br>
-      <input type="file" accept="image/*" onchange="changeAvatar(event)">
-
-      <h3 id="profileUsername"></h3>
-
-      <textarea id="profileStory"
-        placeholder="Tulis story kamu..."
-        style="width:100%;margin-top:10px;border-radius:10px;padding:10px;">
-      </textarea>
-
-      <button onclick="saveStory()">Simpan Story</button>
-
-    </div>
-  </div>
-</div>
-
-  </div>
-  <div id="settings" class="page">
-  <div class="home-box">
-    <h2 style="text-align:center;">⚙️ Pengaturan</h2>
-    <h4>🎨 Tema Aplikasi</h4>
-    
-    <button onclick="setTheme('light')">🌞 Terang</button>
-    <button onclick="setTheme('dark')">🌙 Gelap</button>
-    <button onclick="setTheme('default')">🎨 Default</button>
-
-    <hr style="margin:15px 0">
-
-    <button style="background:red" onclick="logout()">🚪 Logout</button>
-  </div>
-
-  </div>
-  <div class="home-box">
-    
-    <h3 id="profileUsername">Username</h3>
-
-    <input type="file" accept="image/*" onchange="changeAvatar(event)">
-
-    <hr style="margin:15px 0">
-
-    <h4>🕘 Riwayat Chat</h4>
-    <div id="chatHistory"
-      style="max-height:200px;overflow:auto;text-align:left;"></div>
-
-  </div>
-</div>
- 
   
 </body>
 </html>
