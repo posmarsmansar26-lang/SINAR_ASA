@@ -514,6 +514,32 @@ function deleteChat(index){
 loadChat();
 </script>
 
+  <script>
+/* ===== PLAYLIST MINGGUAN ===== */
+const weeklyPlaylist = {
+  week: "Minggu ke-2 (9–13 Februari 2026)",
+  songs: [
+    "Laskar Pelangi – Nidji",
+    "Kisah Kasih Di Sekolah – Chrisye",
+    "Ingatlah Hari Ini – Project Pop",
+    "Manusia Kuat – Tulus",
+    "Tujuh Belas – Tulus"
+  ]
+};
+
+document.getElementById("playlistWeek").innerText = weeklyPlaylist.week;
+
+const list = document.getElementById("playlistSongs");
+list.innerHTML = "";
+
+weeklyPlaylist.songs.forEach(song => {
+  const li = document.createElement("li");
+  li.innerHTML = "▶ " + song;
+  list.appendChild(li);
+});
+</script>
+
+
   <!-- TITIK TIGA (MENU PROFIL) -->
 <span onclick="openSettings()"
   style="position:absolute;top:15px;right:15px;
@@ -576,64 +602,7 @@ loadChat();
 
   </div>
 </div>
-
-<script>
-/* ===== PLAYLIST MINGGUAN ===== */
-const weeklyPlaylist = {
-  week: "Minggu ke-2 (9–13 Februari 2026)",
-  songs: [
-    "Laskar Pelangi – Nidji",
-    "Kisah Kasih Di Sekolah – Chrisye",
-    "Ingatlah Hari Ini – Project Pop",
-    "Manusia Kuat – Tulus",
-    "Tujuh Belas – Tulus"
-  ]
-};
-
-document.getElementById("playlistWeek").innerText = weeklyPlaylist.week;
-
-const list = document.getElementById("playlistSongs");
-list.innerHTML = "";
-
-weeklyPlaylist.songs.forEach(song => {
-  const li = document.createElement("li");
-  li.innerHTML = "▶ " + song;
-  list.appendChild(li);
-});
-</script>
-
-  
-  <div style="position:relative">
-
-    <span onclick="openSettings()"
-      style="position:absolute;top:0;right:0;font-size:24px;cursor:pointer;">
-      ⋮
-    </span>
-
-    <h2 style="text-align:center;color:#1976d2;">👤 Profil</h2>
-
-    <div class="home-box">
-
-      <img id="profileAvatar"
-        src="https://i.imgur.com/6VBx3io.png"
-        style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
-
-      <br><br>
-      <input type="file" accept="image/*" onchange="changeAvatar(event)">
-
-      <h3 id="profileUsername"></h3>
-
-      <textarea id="profileStory"
-        placeholder="Tulis story kamu..."
-        style="width:100%;margin-top:10px;border-radius:10px;padding:10px;">
-      </textarea>
-
-      <button onclick="saveStory()">Simpan Story</button>
-
-    </div>
-  </div>
-</div>
-
+ 
   <script>
 function showPage(id){
   document.querySelectorAll(".page").forEach(p =>
