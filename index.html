@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sinar Asa</title> 
+<meta charset="UTF-8">
 
 <!-- 🔥 INI YANG PALING PENTING UNTUK HP -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -194,91 +192,82 @@ footer span{cursor:pointer;}
 </style>
 </head>
 
+  <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sinar Asa</title>
+
 <style>
   /* CSS kamu yang sudah ada */
 </style>
 </head>
 
-<body>
-<div id="login" class="page active">
-  <div class="home-box">
-    <h2>Login</h2>
-
-    <input id="loginEmail" type="email" placeholder="Email"
-      style="width:100%;padding:10px;margin:8px 0;border-radius:8px;">
-
-    <input id="loginUsername" type="text" placeholder="Username"
-      style="width:100%;padding:10px;margin:8px 0;border-radius:8px;">
-
-    <input id="loginPassword" type="password" placeholder="Password"
-      style="width:100%;padding:10px;margin:8px 0;border-radius:8px;">
-
-    <button onclick="loginUser()">Masuk</button>
-<div id="profile" class="page">
-  <div style="position:relative;">
-
-
-      <script>
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p =>
-    p.classList.remove('active')
-  );
-
-  document.getElementById(id).classList.add('active');
-
-  document.getElementById("footerNav").style.display =
-    (id === "register") ? "none" : "flex";
-}
-</script>
-
   <script>
 function registerUser(){
-  const email = regEmail.value.trim();
-  const username = regUsername.value.trim();
+  const email = document.getElementById("regEmail").value.trim();
+  const username = document.getElementById("regUsername").value.trim();
 
   if(!email || !username){
-    alert("Lengkapi semua data");
+    alert("Email dan Username wajib diisi");
     return;
   }
 
-  localStorage.setItem("userEmail", email);
-  localStorage.setItem("username", username);
+  const userData = {
+    email: email,
+    username: username
+  };
 
+  localStorage.setItem("userAccount", JSON.stringify(userData));
+
+  // masuk ke HOME
+  document.getElementById("register").classList.remove("active");
   showPage("home");
 }
 
-// CEK PERTAMA KALI
-if(!localStorage.getItem("username")){
-  showPage("register");
-}else{
-  showPage("home");
-}
+/* 🔁 CEK SAAT WEB DIBUKA */
+window.addEventListener("load", ()=>{
+  const user = localStorage.getItem("userAccount");
+  if(user){
+    showPage("home");
+  }
+});
+</script>
+
+<body>
+<div id="register" class="page active">
+  <h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
+    📝 Registrasi Pengguna
+  </h2>
+
+  <div style="background:white;padding:20px;border-radius:12px;max-width:400px;margin:auto;">
+    
+    <input id="regEmail" type="email" placeholder="Email"
+      style="width:100%;padding:10px;border-radius:8px;margin-bottom:10px;">
+
+    <input id="regUsername" type="text" placeholder="Username"
+      style="width:100%;padding:10px;border-radius:8px;margin-bottom:10px;">
+
+    <button onclick="registerUser()">Daftar</button>
+
+  </div>
+</div>
+
   
- <script>
-function loginUser(){
-  const email = loginEmail.value.trim();
-  const username = loginUsername.value.trim();
-  const password = loginPassword.value.trim();
+  <script>
+document.addEventListener("DOMContentLoaded", ()=>{
+  const email = localStorage.getItem("userEmail");
+  const username = localStorage.getItem("username");
 
-  if(!email || !username || !password){
-    alert("Semua field wajib diisi");
-    return;
+  if(email && username){
+    showPage("home");
+  }else{
+    showPage("register");
   }
-
-  localStorage.setItem("userEmail", email);
-  localStorage.setItem("username", username);
-
-  document.getElementById("mainHeader").style.display = "block";
-  document.getElementById("footerNav").style.display = "flex";
-
-  showPage("home");
-}
+});
 </script>
 
 
-<header id="mainHeader">
-<h1>Sinar Asa</h1>
-</header>
+<header><h1>Sinar Asa</h1></header>
 <div id="home" class="page active">
 <div class="home-box">
     💙 <b>SINAR ASA</b> 💙<br><br>
@@ -327,13 +316,14 @@ Kalender Tahun 2026
 
 <script>
 function showPage(id){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+  document.querySelectorAll('.page')
+    .forEach(p=>p.classList.remove('active'));
 
-  if(id === "login"){
-    mainHeader.style.display = "none";
-    footerNav.style.display = "none";
-  }
+  document.getElementById(id).classList.add('active');
+
+  document.getElementById("footerNav").style.display =
+    (id === "register") ? "none" : "flex";
+}
 
 /* 🔴 LIBUR NASIONAL */
 const holidays={
@@ -573,7 +563,42 @@ weeklyPlaylist.songs.forEach(song => {
 });
 </script>
 
-  <script> 
+  <script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p =>
+    p.classList.remove('active')
+  );
+
+  document.getElementById(id).classList.add('active');
+
+  document.getElementById("footerNav").style.display =
+    (id === "register") ? "none" : "flex";
+}
+</script>
+
+  <script>
+function registerUser(){
+  const email = regEmail.value.trim();
+  const username = regUsername.value.trim();
+
+  if(!email || !username){
+    alert("Lengkapi semua data");
+    return;
+  }
+
+  localStorage.setItem("userEmail", email);
+  localStorage.setItem("username", username);
+
+  showPage("home");
+}
+
+// CEK PERTAMA KALI
+if(!localStorage.getItem("username")){
+  showPage("register");
+}else{
+  showPage("home");
+}
+
 // ===== PROFIL =====
 function loadProfile(){
   profileUsername.innerText =
@@ -601,102 +626,6 @@ function changeAvatar(e){
 }
 </script>
 
- <!-- TITIK TIGA -->
-    <span onclick="showSettings()"
-      style="position:absolute;top:0;right:0;font-size:24px;cursor:pointer;">
-      ⋮
-    </span>
-
-    <div style="text-align:center;margin-top:20px;">
-      <img id="avatar"
-        src="https://i.imgur.com/6VBx3io.png"
-        style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
-      
-      <br><br>
-      <input type="file" accept="image/*" onchange="changeAvatar(event)">
-      
-      <h3 id="profileUsername"></h3>
-
-      <textarea id="story"
-        placeholder="Tulis story kamu..."
-        style="width:100%;margin-top:10px;border-radius:10px;padding:10px;">
-      </textarea>
-      <button onclick="saveStory()">Simpan Story</button>
-
-      <div id="settings" class="page">
-  <h2>Pengaturan</h2>
-
-  <button onclick="setTheme('light')">🌞 Tema Terang</button>
-  <button onclick="setTheme('dark')">🌙 Tema Gelap</button>
-  <button onclick="setTheme('default')">🎨 Default</button>
-        
-  <hr><br>
-
-  <button style="background:red" onclick="logout()">🚪 Logout</button>
-  </div>
-  </div>
-
   
-  <script>
-document.addEventListener("DOMContentLoaded", ()=>{
-  const email = localStorage.getItem("userEmail");
-  const username = localStorage.getItem("username");
-
-  if(email && username){
-    showPage("home");
-  }else{
-    showPage("register");
-  }
-});
-</script>
-
-  <script>
-function loadProfile(){
-  profileUsername.innerText = localStorage.getItem("username") || "Pengguna";
-
-  const avatar = localStorage.getItem("avatar");
-  if(avatar) document.getElementById("avatar").src = avatar;
-
-  story.value = localStorage.getItem("story") || "";
-}
-
-function changeAvatar(e){
-  const reader = new FileReader();
-  reader.onload = ()=>{
-    avatar.src = reader.result;
-    localStorage.setItem("avatar", reader.result);
-  };
-  reader.readAsDataURL(e.target.files[0]);
-}
-
-function saveStory(){
-  localStorage.setItem("story", story.value);
-  alert("Story disimpan");
-}
-</script>
-
-    <script>
-function showSettings(){
-  showPage("settings");
-}
-
-function logout(){
-  localStorage.clear();
-  location.reload();
-}
-
-function setTheme(mode){
-  if(mode === "dark"){
-    document.body.style.background = "#121212";
-    document.body.style.color = "white";
-  }else if(mode === "light"){
-    document.body.style.background = "#ffffff";
-    document.body.style.color = "#000";
-  }else{
-    document.body.style.background = "#f4f8ff";
-    document.body.style.color = "#000";
-  }
-}
-</script>
-
-    
+</body>
+</html>
