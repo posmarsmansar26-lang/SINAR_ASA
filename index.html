@@ -640,34 +640,38 @@ if(!localStorage.getItem("username")){
 }
 
   <script>
-/* ===== PROFIL ===== */
-function loadProfile(){
-  profileUsername.innerText =
-    localStorage.getItem("username") || "Pengguna";
+<div id="profile" class="page">
+  <div style="position:relative">
 
-  const avatar = localStorage.getItem("avatar");
-  if(avatar) profileAvatar.src = avatar;
+    <!-- TITIK TIGA -->
+    <span onclick="openSettings()"
+      style="position:absolute;top:0;right:0;font-size:24px;cursor:pointer;">
+      ⋮
+    </span>
 
-  profileStory.value =
-    localStorage.getItem("story") || "";
-}
+    <h2 style="text-align:center;color:#1976d2;">👤 Profil</h2>
 
-function changeAvatar(e){
-  const file = e.target.files[0];
-  if(!file) return;
+    <div class="home-box">
 
-  const reader = new FileReader();
-  reader.onload = ()=>{
-    localStorage.setItem("avatar", reader.result);
-    profileAvatar.src = reader.result;
-  };
-  reader.readAsDataURL(file);
-}
+      <img id="profileAvatar"
+        src="https://i.imgur.com/6VBx3io.png"
+        style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
 
-function saveStory(){
-  localStorage.setItem("story", profileStory.value);
-  alert("Story disimpan");
-}
+      <br><br>
+      <input type="file" accept="image/*" onchange="changeAvatar(event)">
+
+      <h3 id="profileUsername" style="margin-top:10px;"></h3>
+
+      <textarea id="profileStory"
+        placeholder="Tulis story kamu..."
+        style="width:100%;margin-top:10px;border-radius:10px;padding:10px;">
+      </textarea>
+
+      <button onclick="saveStory()">Simpan Story</button>
+
+    </div>
+  </div>
+</div>
 
 /* ===== SETTINGS ===== */
 function openSettings(){
