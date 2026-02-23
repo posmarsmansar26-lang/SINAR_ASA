@@ -545,8 +545,7 @@ loadChat();
   </div>
   <div id="settings" class="page">
   <div class="home-box">
-    
-    <h2 style="color:#1976d2;text-align:center;">⚙️ Pengaturan</h2>
+    <h2 style="text-align:center;">⚙️ Pengaturan</h2>
     <h4>🎨 Tema Aplikasi</h4>
     
     <button onclick="setTheme('light')">🌞 Terang</button>
@@ -557,8 +556,9 @@ loadChat();
 
     <button style="background:red" onclick="logout()">🚪 Logout</button>
   </div>
-</div>
-<div class="home-box">
+
+  </div>
+  <div class="home-box">
 
     <img id="profileAvatar"
       src="https://i.imgur.com/6VBx3io.png"
@@ -638,33 +638,6 @@ if(!localStorage.getItem("username")){
 }else{
   showPage("home");
 }
-
-// ===== PROFIL =====
-function loadProfile(){
-  profileUsername.innerText =
-    localStorage.getItem("username") || "Pengguna";
-
-  const avatar = localStorage.getItem("avatar");
-  if(avatar) profileAvatar.src = avatar;
-
-  const chats =
-    JSON.parse(localStorage.getItem("aspirasiChats")) || [];
-
-  chatHistory.innerHTML = chats.map(c=>"• "+c).join("<br>");
-}
-
-function changeAvatar(e){
-  const file = e.target.files[0];
-  if(!file) return;
-
-  const reader = new FileReader();
-  reader.onload = ()=>{
-    localStorage.setItem("avatar", reader.result);
-    profileAvatar.src = reader.result;
-  };
-  reader.readAsDataURL(file);
-}
-</script>
 
   <script>
 /* ===== PROFIL ===== */
