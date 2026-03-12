@@ -274,12 +274,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </script>
 
 
-<header><h1>Sinar Asa</h1></header>
-<div id="home" class="page active">
-<div class="home-box">
-     <b>SINAR ASA</b> <br><br>
-    Sarana Informasi dan Aspirasi Anak SMANSAR
-  </div>
+<header id="mainHeader">
+  <h1>Sinar Asa</h1>
+</header>
 
    <!-- 🎵 PLAYLIST MINGGUAN -->
   <div class="playlist-box">
@@ -328,8 +325,12 @@ function showPage(id){
 
   document.getElementById(id).classList.add('active');
 
-  document.getElementById("footerNav").style.display =
-    (id === "register") ? "none" : "flex";
+  // sembunyikan header saat register
+  if(id === "register"){
+    document.getElementById("mainHeader").style.display = "none";
+  }else{
+    document.getElementById("mainHeader").style.display = "block";
+  }
 }
 
 /* 🔴 LIBUR NASIONAL */
