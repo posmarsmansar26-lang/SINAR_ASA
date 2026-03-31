@@ -204,7 +204,23 @@ footer span{cursor:pointer;}
 <title>Sinar Asa</title>
 
 <style>
-  /* CSS kamu yang sudah ada */
+body.dark{
+  background:#121212;
+  color:white;
+}
+
+body.dark .home-box,
+body.dark .month,
+body.dark .playlist-box,
+body.dark #chatBox{
+  background:#1e1e1e;
+  color:white;
+}
+
+body.dark header,
+body.dark footer{
+  background:#0d47a1;
+}
 </style>
 </head>
 
@@ -237,17 +253,29 @@ window.addEventListener("load", ()=>{
   if(user){
     showPage("home");
   }
+    function toggleTheme(){
+  document.body.classList.toggle("dark");
+
+  const isDark = document.body.classList.contains("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+}
+
+// load tema saat buka web
+window.addEventListener("load", ()=>{
+  const theme = localStorage.getItem("theme");
+  if(theme === "dark"){
+    document.body.classList.add("dark");
+  }
 });
 </script>
 
+  
 <body>
 <div id="register" class="page active">
 <h2 style="text-align:center;color:#1976d2;margin-bottom:15px;">
     📝 Registrasi Pengguna
-  </h2>
-
+</h2>
   <div style="background:white;padding:20px;border-radius:12px;max-width:400px;margin:auto;">
-    
     <input id="regEmail" type="email" placeholder="Email"
       style="width:100%;padding:10px;border-radius:8px;margin-bottom:10px;">
 
@@ -276,6 +304,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 <div id="home" class="page active">
 <div class="home-box">
+  <div style="position:absolute; top:10px; right:10px;">
+  <button onclick="toggleTheme()" style="padding:6px 10px;border-radius:8px;">
+    🌙
+  </button>
     <header><h1>Sinar Asa</h1></header>
     💙 <b>SINAR ASA</b> 💙<br><br>
     Sarana Informasi dan Aspirasi Anak SMANSAR
