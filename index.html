@@ -204,7 +204,23 @@ footer span{cursor:pointer;}
 <title>Sinar Asa</title>
 
 <style>
-  /* CSS kamu yang sudah ada */
+  body.dark{
+  background:#121212;
+  color:white;
+}
+
+body.dark .home-box,
+body.dark .month,
+body.dark .playlist-box,
+body.dark #chatBox{
+  background:#1e1e1e;
+  color:white;
+}
+
+body.dark header,
+body.dark footer{
+  background:#0d47a1;
+}
 </style>
 </head>
 
@@ -277,6 +293,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
 <header><h2>Sinar Asa</h2></header>
 <div id="home" class="page active">
 <div class="home-box">
+<div style="position:absolute; top:10px; right:10px;">
+<button onclick="toggleTheme()" style="padding:6px 10px;border-radius:8px;">
+    🌙
+</button>
+</div>
     💙 <b>SINAR ASA</b> 💙<br><br>
     Sarana Informasi dan Aspirasi Anak SMANSAR
   </div>
