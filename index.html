@@ -246,6 +246,7 @@ body.dark footer{
     </div>
 
     💙 <b>SINAR ASA</b> 💙
+
     <br><br>
 
     Sarana Informasi dan Aspirasi Anak SMANSAR
@@ -271,7 +272,7 @@ body.dark footer{
 <div id="calendar" class="page">
 
   <h2 style="text-align:center;color:#1976d2;margin-bottom:20px;">
-    Kalender Tahun 2026
+    Kalender Tahun 2025 & 2026
   </h2>
 
   <div id="calendarContainer"></div>
@@ -290,7 +291,6 @@ body.dark footer{
     📅
   </span>
 
-
   <!-- ===== GOOGLE DRIVE ===== -->
   <a
     href="https://drive.google.com/drive/folders/1oNJfsM6q71EyBhA3YoUglF9_flXwupmY"
@@ -308,6 +308,7 @@ body.dark footer{
 
 <script>
 
+
 /* ===== PINDAH HALAMAN ===== */
 
 function showPage(id){
@@ -323,10 +324,66 @@ function showPage(id){
 
 
 /* ================================================= */
-/* ===== LIBUR NASIONAL ============================= */
+/* ===== LIBUR NASIONAL 2025 ======================== */
 /* ================================================= */
 
-const holidays={
+const holidays2025 = {
+
+  /* ===== OKTOBER ===== */
+  "2025-10-05":"Maulid Nabi Muhammad SAW",
+  "2025-10-22":"Hari Santri Nasional",
+
+  /* ===== NOVEMBER ===== */
+  "2025-11-10":"Hari Pahlawan",
+  "2025-11-25":"Hari Guru Nasional",
+
+  /* ===== DESEMBER ===== */
+  "2025-12-22":"Hari Ibu Nasional",
+  "2025-12-25":"Hari Raya Natal"
+
+};
+
+
+/* ================================================= */
+/* ===== HARI INTERNASIONAL 2025 ==================== */
+/* ================================================= */
+
+const internationalDays2025 = {
+
+  /* ===== OKTOBER ===== */
+  "2025-10-01":"Hari Lansia Internasional",
+  "2025-10-05":"Hari Guru Sedunia",
+  "2025-10-10":"Hari Kesehatan Mental Sedunia",
+  "2025-10-16":"Hari Pangan Sedunia",
+  "2025-10-24":"Hari Perserikatan Bangsa-Bangsa",
+
+  /* ===== NOVEMBER ===== */
+  "2025-11-10":"Hari Sains Sedunia",
+  "2025-11-20":"Hari Anak Sedunia",
+
+  /* ===== DESEMBER ===== */
+  "2025-12-01":"Hari AIDS Sedunia",
+  "2025-12-03":"Hari Penyandang Disabilitas Internasional",
+  "2025-12-10":"Hari Hak Asasi Manusia",
+  "2025-12-20":"Hari Solidaritas Kemanusiaan Internasional"
+
+};
+
+
+/* ================================================= */
+/* ===== EVENT POSMAR 2025 ========================== */
+/* ================================================= */
+
+const posmarEvents2025 = {
+
+};
+
+
+/* ================================================= */
+/* ===== LIBUR NASIONAL 2026 ======================== */
+/* ================================================= */
+
+const holidays2026 = {
 
   "2026-01-01":"Tahun Baru Masehi",
   "2026-01-16":"Isra' Mi'raj Nabi Muhammad",
@@ -380,10 +437,10 @@ const holidays={
 
 
 /* ================================================= */
-/* ===== HARI INTERNASIONAL ========================= */
+/* ===== HARI INTERNASIONAL 2026 ==================== */
 /* ================================================= */
 
-const internationalDays={
+const internationalDays2026 = {
 
   "2026-01-01":"Tahun Baru Masehi",
   "2026-01-10":"Hari Gerakan Satu Juta Pohon",
@@ -422,10 +479,10 @@ const internationalDays={
 
 
 /* ================================================= */
-/* ===== EVENT POSMAR =============================== */
+/* ===== EVENT POSMAR 2026 ========================== */
 /* ================================================= */
 
-const posmarEvents={
+const posmarEvents2026 = {
 
   "2026-01-22":"Isra' Mi'raj Tahun 2026",
   "2026-01-28":"Expo Campus SPARK",
@@ -435,10 +492,10 @@ const posmarEvents={
 
 
 /* ================================================= */
-/* ===== DATA KALENDER ============================== */
+/* ===== DATA BULAN & HARI ========================== */
 /* ================================================= */
 
-const months=[
+const months = [
   "Januari",
   "Februari",
   "Maret",
@@ -453,7 +510,7 @@ const months=[
   "Desember"
 ];
 
-const days=[
+const days = [
   "Min",
   "Sen",
   "Sel",
@@ -463,34 +520,52 @@ const days=[
   "Sab"
 ];
 
-const container=document.getElementById("calendarContainer");
+const container =
+  document.getElementById("calendarContainer");
 
 
-/* ===== MEMBUAT KALENDER ===== */
+/* ================================================= */
+/* ===== FUNGSI MEMBUAT KALENDER ==================== */
+/* ================================================= */
 
-months.forEach((month,m)=>{
+function createCalendar(
+  year,
+  monthIndex,
+  holidayData,
+  internationalData,
+  posmarData
+){
 
-  const monthDiv=document.createElement("div");
+  const month =
+    months[monthIndex];
 
-  monthDiv.className="month";
 
-  monthDiv.innerHTML=`
-    <h3>${month} 2026</h3>
+  const monthDiv =
+    document.createElement("div");
+
+  monthDiv.className =
+    "month";
+
+
+  monthDiv.innerHTML = `
+    <h3>${month} ${year}</h3>
   `;
 
 
-  const grid=document.createElement("div");
+  const grid =
+    document.createElement("div");
 
-  grid.className="calendar-grid";
+  grid.className =
+    "calendar-grid";
 
 
   /* ===== NAMA HARI ===== */
 
-  days.forEach(d=>{
+  days.forEach(day => {
 
-    grid.innerHTML+=`
+    grid.innerHTML += `
       <div class="day header">
-        ${d}
+        ${day}
       </div>
     `;
 
@@ -499,62 +574,84 @@ months.forEach((month,m)=>{
 
   /* ===== HARI PERTAMA ===== */
 
-  const firstDay=
-    new Date(2026,m,1).getDay();
+  const firstDay =
+    new Date(
+      year,
+      monthIndex,
+      1
+    ).getDay();
 
 
   /* ===== JUMLAH HARI ===== */
 
-  const totalDays=
-    new Date(2026,m+1,0).getDate();
+  const totalDays =
+    new Date(
+      year,
+      monthIndex + 1,
+      0
+    ).getDate();
 
 
   /* ===== KOTAK KOSONG ===== */
 
-  for(let i=0;i<firstDay;i++){
+  for(
+    let i = 0;
+    i < firstDay;
+    i++
+  ){
 
-    grid.innerHTML+=`
+    grid.innerHTML += `
       <div class="day"></div>
     `;
 
   }
 
 
-  let h=[];
-  let iD=[];
-  let p=[];
+  let h = [];
+  let iD = [];
+  let p = [];
 
 
   /* ===== TANGGAL ===== */
 
-  for(let d=1;d<=totalDays;d++){
+  for(
+    let d = 1;
+    d <= totalDays;
+    d++
+  ){
 
-    const dateStr=
-      `2026-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+    const dateStr =
+      `${year}-${String(monthIndex + 1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
 
 
-    let cls="day";
+    let cls = "day";
 
 
     /* ===== MINGGU ===== */
 
     if(
-      new Date(2026,m,d).getDay()===0
+      new Date(
+        year,
+        monthIndex,
+        d
+      ).getDay() === 0
     ){
 
-      cls+=" sunday";
+      cls += " sunday";
 
     }
 
 
     /* ===== LIBUR NASIONAL ===== */
 
-    if(holidays[dateStr]){
+    if(
+      holidayData[dateStr]
+    ){
 
-      cls+=" holiday";
+      cls += " holiday";
 
       h.push(
-        `🔴 ${d} ${month} – ${holidays[dateStr]}`
+        `🔴 ${d} ${month} – ${holidayData[dateStr]}`
       );
 
     }
@@ -562,12 +659,14 @@ months.forEach((month,m)=>{
 
     /* ===== HARI INTERNASIONAL ===== */
 
-    if(internationalDays[dateStr]){
+    if(
+      internationalData[dateStr]
+    ){
 
-      cls+=" international";
+      cls += " international";
 
       iD.push(
-        `🟠 ${d} ${month} – ${internationalDays[dateStr]}`
+        `🟠 ${d} ${month} – ${internationalData[dateStr]}`
       );
 
     }
@@ -575,18 +674,20 @@ months.forEach((month,m)=>{
 
     /* ===== EVENT POSMAR ===== */
 
-    if(posmarEvents[dateStr]){
+    if(
+      posmarData[dateStr]
+    ){
 
-      cls+=" posmar";
+      cls += " posmar";
 
       p.push(
-        `🔵 ${d} ${month} – ${posmarEvents[dateStr]}`
+        `🔵 ${d} ${month} – ${posmarData[dateStr]}`
       );
 
     }
 
 
-    grid.innerHTML+=`
+    grid.innerHTML += `
       <div class="${cls}">
         ${d}
       </div>
@@ -600,19 +701,28 @@ months.forEach((month,m)=>{
 
   /* ===== CATATAN BULAN ===== */
 
-  if(h.length || iD.length || p.length){
+  if(
+    h.length ||
+    iD.length ||
+    p.length
+  ){
 
-    const note=document.createElement("div");
+    const note =
+      document.createElement("div");
 
-    note.style.marginTop="10px";
+
+    note.style.marginTop =
+      "10px";
 
 
-    note.innerHTML=`
+    note.innerHTML = `
 
       <b style="color:red;">
         🔴 Hari Libur Nasional
       </b>
+
       <br>
+
       ${h.join("<br>") || "-"}
 
 
@@ -622,7 +732,9 @@ months.forEach((month,m)=>{
       <b style="color:orange;">
         🟠 Hari Internasional
       </b>
+
       <br>
+
       ${iD.join("<br>") || "-"}
 
 
@@ -632,7 +744,9 @@ months.forEach((month,m)=>{
       <b style="color:#1976d2;">
         🔵 Event POSMAR
       </b>
+
       <br>
+
       ${p.join("<br>") || "-"}
 
     `;
@@ -645,7 +759,49 @@ months.forEach((month,m)=>{
 
   container.appendChild(monthDiv);
 
-});
+}
+
+
+/* ================================================= */
+/* ===== OKTOBER - DESEMBER 2025 ==================== */
+/* ================================================= */
+
+for(
+  let m = 9;
+  m <= 11;
+  m++
+){
+
+  createCalendar(
+    2025,
+    m,
+    holidays2025,
+    internationalDays2025,
+    posmarEvents2025
+  );
+
+}
+
+
+/* ================================================= */
+/* ===== JANUARI - DESEMBER 2026 ==================== */
+/* ================================================= */
+
+for(
+  let m = 0;
+  m < 12;
+  m++
+){
+
+  createCalendar(
+    2026,
+    m,
+    holidays2026,
+    internationalDays2026,
+    posmarEvents2026
+  );
+
+}
 
 </script>
 
@@ -678,22 +834,28 @@ const weeklyPlaylist = {
 };
 
 
-document.getElementById("playlistWeek").innerText =
+document.getElementById(
+  "playlistWeek"
+).innerText =
   weeklyPlaylist.week;
 
 
-const list=
-  document.getElementById("playlistSongs");
+const list =
+  document.getElementById(
+    "playlistSongs"
+  );
 
 
-list.innerHTML="";
+list.innerHTML = "";
 
 
-weeklyPlaylist.songs.forEach(song=>{
+weeklyPlaylist.songs.forEach(song => {
 
-  const li=document.createElement("li");
+  const li =
+    document.createElement("li");
 
-  li.innerHTML="▶ " + song;
+  li.innerHTML =
+    "▶ " + song;
 
   list.appendChild(li);
 
@@ -713,7 +875,7 @@ function toggleTheme(){
   document.body.classList.toggle("dark");
 
 
-  const isDark=
+  const isDark =
     document.body.classList.contains("dark");
 
 
@@ -727,19 +889,22 @@ function toggleTheme(){
 
 /* ===== MEMUAT TEMA SAAT WEB DIBUKA ===== */
 
-window.addEventListener("load",()=>{
+window.addEventListener(
+  "load",
+  () => {
 
-  const theme=
-    localStorage.getItem("theme");
+    const theme =
+      localStorage.getItem("theme");
 
 
-  if(theme==="dark"){
+    if(theme === "dark"){
 
-    document.body.classList.add("dark");
+      document.body.classList.add("dark");
+
+    }
 
   }
-
-});
+);
 
 </script>
 
