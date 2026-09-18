@@ -89,43 +89,6 @@ header{
 }
 
 
-/* ===== PLAYLIST ===== */
-.playlist-box{
-  background:white;
-  margin-top:20px;
-  padding:15px;
-  border-radius:14px;
-  box-shadow:0 2px 6px rgba(0,0,0,.1);
-}
-
-.playlist-box h3{
-  color:#1976d2;
-  margin-bottom:5px;
-  text-align:center;
-}
-
-.playlist-box p{
-  text-align:center;
-  font-size:14px;
-  color:#555;
-  margin-bottom:10px;
-}
-
-.playlist-box ul{
-  list-style:none;
-}
-
-.playlist-box li{
-  padding:8px;
-  border-bottom:1px solid #eee;
-  font-size:15px;
-}
-
-.playlist-box li:last-child{
-  border-bottom:none;
-}
-
-
 /* ===== KALENDER ===== */
 .month{
   background:white;
@@ -228,7 +191,7 @@ body.dark footer{
 
 <!-- ===== HEADER ===== -->
 <header>
-  <h2>Sinar Asa</h2>
+  <h2>SINAR ASA</h2>
 </header>
 
 
@@ -253,19 +216,6 @@ body.dark footer{
 
   </div>
 
-
-  <!-- ===== PLAYLIST MINGGUAN ===== -->
-  <div class="playlist-box">
-
-    <h3>🎵 Playlist Mingguan</h3>
-
-    <p id="playlistWeek"></p>
-
-    <ul id="playlistSongs"></ul>
-
-  </div>
-
-</div>
 
 
 <!-- ===== KALENDER ===== -->
@@ -375,9 +325,16 @@ const internationalDays2025 = {
 /* ================================================= */
 
 const posmarEvents2025 = {
-  "2025-10-":"Latihan Dasar Kepemimpinan Siswa Tahun 2025",
-  "2025-10-22":"Isra' Mi'raj Tahun 2026",
-  "2025-10-22":"Isra' Mi'raj Tahun 2026",
+  "2025-10-28":"Upacara Sumpah Pemuda",
+  "2025-11-10":"Upacara Hari Pahlawan",
+  "2025-11-10":"Reorganisasi Kepengurusan Rohis",
+  "2025-12-11":"ClassMeeting Semester 1",
+  "2025-12-12":"ClassMeeting Semester 1",
+  "2025-12-15":"ClassMeeting Semester 1",
+  "2025-12-16":"HUT SMA NEGERI 1 RENGEL",
+  "2025-12-25":"Peringatan Hari Raya Natal",
+  "2025-12-17":"Khataman Al-Qur'an",
+  "2025-12-20":"Kunjungan Religi",
 
 };
 
@@ -486,11 +443,34 @@ const internationalDays2026 = {
 /* ================================================= */
 
 const posmarEvents2026 = {
-
-  "2026-01-22":"Isra' Mi'raj Tahun 2026",
-  "2026-01-28":"Expo Campus SPARK",
-  "2026-04-28":"Latihan Gabungan PMR"
-
+  "2026-01-28":"Expo Campus",
+  "2026-01-21":"Peringatan Isra' Mi'raj",
+  "2026-02-26":"SMANSAR Berbagi",
+  "2026-03-06":"SMANSAR Berbagi",
+  "2026-03-06":"Nuzulul Qur'an",
+  "2026-03-12":"SMANSAR Berbagi",
+  "2026-03-26":"Pelaksanaan Zakat Fitrah",
+  "2026-03-26":"Pesantren Kilat",
+  "2026-03-30":"Halal Bihalal Idul FItri",
+  "2026-04-05":"Peringatan Hari Kebangkitan Yesus Kristus",
+  "2026-04-11":"Perpisahan kelas XII",
+  "2026-05-11":"ClassMeeting Semester 1",
+  "2026-06-10":"ClassMeeting Semester 2",
+  "2026-06-11":"ClassMeeting Semester 2",
+  "2026-06-12":"ClassMeeting Semester 2",
+  "2026-06-13":"ClassMeeting Semester 2",
+  "2026-07-26":"Demo Ekstrakulikuler",
+  "2026-08-07":"SARASA(SMANSAR Berbagi Cinta dan Asa",
+  "2026-08-11":"ClassMeeting Semester 1",
+  "2026-09-11":"Peringatan Maulid Nabi",
+  "2026-09-12":"Posmar Cup Season 8",
+  "2026-09-13":"Posmar Cup Season 8",
+  "2026-09-19":"Posmar Cup Season 8",
+  "2026-09-20":"Posmar Cup Season 8",
+  "2026-10-11":"ClassMeeting Semester 1",
+  "2026-11-11":"ClassMeeting Semester 1",
+  "2026-12-11":"ClassMeeting Semester 1",
+  
 };
 
 
@@ -809,64 +789,7 @@ for(
 </script>
 
 
-<!-- ================================================= -->
-<!-- ===== PLAYLIST MINGGUAN ========================= -->
-<!-- ================================================= -->
-
-<script>
-
-const weeklyPlaylist = {
-
-  week:
-    "Minggu ke-2 (9–13 Februari 2026)",
-
-  songs: [
-
-    "Laskar Pelangi – Nidji",
-
-    "Kisah Kasih Di Sekolah – Chrisye",
-
-    "Ingatlah Hari Ini – Project Pop",
-
-    "Manusia Kuat – Tulus",
-
-    "Tujuh Belas – Tulus"
-
-  ]
-
-};
-
-
-document.getElementById(
-  "playlistWeek"
-).innerText =
-  weeklyPlaylist.week;
-
-
-const list =
-  document.getElementById(
-    "playlistSongs"
-  );
-
-
-list.innerHTML = "";
-
-
-weeklyPlaylist.songs.forEach(song => {
-
-  const li =
-    document.createElement("li");
-
-  li.innerHTML =
-    "▶ " + song;
-
-  list.appendChild(li);
-
-});
-
-</script>
-
-
+  
 <!-- ================================================= -->
 <!-- ===== MODE GELAP / TERANG ======================= -->
 <!-- ================================================= -->
