@@ -1,238 +1,166 @@
 /* ===== MODE HP ===== */
-@media (max-width: 600px){
-
-  header h1{
-    font-size:20px;
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 20px;
   }
 
-  .page{
-    padding:12px;
+  .page {
+    padding: 12px;
   }
 
-  .month{
-    padding:10px;
+  .month {
+    padding: 10px;
   }
 
-  .calendar-grid{
-    gap:3px;
+  .calendar-grid {
+    gap: 3px;
   }
 
-  .day{
-    font-size:12px;
-    padding:6px;
+  .day {
+    font-size: 12px;
+    padding: 6px;
   }
 
-  button{
-    font-size:14px;
-    padding:8px;
+  button {
+    font-size: 14px;
+    padding: 8px;
   }
 
-  footer{
-    font-size:20px;
-    padding:10px 0;
+  footer {
+    font-size: 20px;
+    padding: 10px 0;
   }
 }
-
 
 /* ===== DASAR ===== */
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:"Times New Roman", serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", serif;
 }
 
-body{
-  background:#f4f8ff;
-  padding-bottom:120px;
+body {
+  background: #f4f8ff;
+  padding-bottom: 120px;
 }
-
 
 /* ===== HEADER ===== */
-header{
-  background:#1976d2;
-  color:white;
-  padding:20px;
-  text-align:center;
+header {
+  background: #1976d2;
+  color: white;
+  padding: 20px;
+  text-align: center;
 }
-
 
 /* ===== HALAMAN ===== */
-.page{
-  display:none;
-  padding:20px;
-  max-width:900px;
-  margin:auto;
+.page {
+  display: none;
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
 }
 
-.page.active{
-  display:block;
+.page.active {
+  display: block;
 }
-
 
 /* ===== HOME ===== */
-.home-box{
-  background:white;
-  padding:20px;
-  border-radius:12px;
-  text-align:center;
+.home-box {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
 }
-
-
-/* ===== PLAYLIST ===== */
-.playlist-box{
-  background:white;
-  margin-top:20px;
-  padding:15px;
-  border-radius:14px;
-  box-shadow:0 2px 6px rgba(0,0,0,.1);
-}
-
-.playlist-box h3{
-  color:#1976d2;
-  margin-bottom:5px;
-  text-align:center;
-}
-
-.playlist-box p{
-  text-align:center;
-  font-size:14px;
-  color:#555;
-  margin-bottom:10px;
-}
-
-.playlist-box ul{
-  list-style:none;
-}
-
-.playlist-box li{
-  padding:8px;
-  border-bottom:1px solid #eee;
-  font-size:15px;
-}
-
-.playlist-box li:last-child{
-  border-bottom:none;
-}
-
 
 /* ===== KALENDER ===== */
-.month{
-  background:white;
-  border-radius:12px;
-  padding:15px;
-  margin-bottom:25px;
-  box-shadow:0 2px 6px rgba(0,0,0,.1);
+.month {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.month h3{
-  text-align:center;
-  color:#1976d2;
-  margin-bottom:10px;
+.month h3 {
+  text-align: center;
+  color: #1976d2;
+  margin-bottom: 10px;
 }
 
-.calendar-grid{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:5px;
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
 }
 
-.day{
-  padding:8px;
-  text-align:center;
-  border-radius:6px;
-  font-size:14px;
+.day {
+  padding: 8px;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
-.day.header{
-  background:#1976d2;
-  color:white;
-  font-weight:bold;
+.day.header {
+  background: #1976d2;
+  color: white;
+  font-weight: bold;
 }
 
-.sunday{
-  color:red;
-  font-weight:bold;
+.sunday {
+  color: red;
+  font-weight: bold;
 }
 
-.holiday{
-  background:#ffcdd2;
-  color:red;
-  font-weight:bold;
+.holiday {
+  background: #ffcdd2;
+  color: red;
+  font-weight: bold;
 }
 
-.international{
-  background:#ffe0b2;
-  color:#e65100;
-  font-weight:bold;
+.international {
+  background: #ffe0b2;
+  color: #e65100;
+  font-weight: bold;
 }
 
-.posmar{
-  background:#64b5f6;
-  color:#0d47a1;
-  font-weight:bold;
+.posmar {
+  background: #64b5f6;
+  color: #0d47a1;
+  font-weight: bold;
 }
-
 
 /* ===== FOOTER ===== */
-footer{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  background:#1976d2;
-  display:flex;
-  justify-content:space-around;
-  padding:12px 0;
-  font-size:22px;
-  color:white;
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #1976d2;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  font-size: 22px;
+  color: white;
 }
 
-footer span{
-  cursor:pointer;
+footer span {
+  cursor: pointer;
 }
-
 
 /* ===== MODE GELAP ===== */
-body.dark{
-  background:#121212;
-  color:white;
+body.dark {
+  background: #121212;
+  color: white;
 }
 
 body.dark .home-box,
 body.dark .month,
-body.dark .playlist-box{
-  background:#1e1e1e;
-  color:white;
+body.dark .playlist-box {
+  background: #1e1e1e;
+  color: white;
 }
 
 body.dark header,
-body.dark footer{
-  background:#0d47a1;
+body.dark footer {
+  background: #0d47a1;
 }
-
-/* ===== ELEMEN YANG SEBELUMNYA INLINE DI HTML ===== */
-.theme-toggle{
-  position:absolute;
-  top:10px;
-  right:10px;
-}
-
-.theme-button{
-  padding:6px 10px;
-  border-radius:8px;
-  border:1px solid #ddd;
-  background:white;
-  cursor:pointer;
-}
-
-.calendar-title{
-  text-align:center;
-  color:#1976d2;
-  margin-bottom:20px;
-}
-
-.drive-link{
-  color:white;
-  text-decoration:none;
-}
-
